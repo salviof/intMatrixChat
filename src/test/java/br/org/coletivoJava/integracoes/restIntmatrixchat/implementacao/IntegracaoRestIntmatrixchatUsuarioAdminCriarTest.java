@@ -16,18 +16,22 @@ import org.junit.Test;
  *
  * @author salvio
  */
-public class IntegracaoRestIntmatrixchatUsuarioCriarTest {
+public class IntegracaoRestIntmatrixchatUsuarioAdminCriarTest {
 
-    public IntegracaoRestIntmatrixchatUsuarioCriarTest() {
+    public IntegracaoRestIntmatrixchatUsuarioAdminCriarTest() {
     }
 
+    /**
+     * Test of gerarCorpoRequisicao method, of class
+     * IntegracaoRestIntmatrixchatUsuarioAdminCriar.
+     */
     @Test
-    public void testSomeMethod() {
+    public void testGerarCorpoRequisicao() {
         SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
         if (!FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR.getGestaoToken().isPossuiAutenticacaoDeUsuario()) {
             FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR.getGestaoToken().gerarNovoToken();
         }
-        String slugUsuario = "camila_bissiguini";
+        String slugUsuario = "auxiliadora";
         String codigoUsuario = UtilsbApiMatrixChat.gerarCodigoBySlugUser(slugUsuario);
 
         //      codigo: @beatriz202:casanovadigital.com.br
@@ -36,20 +40,18 @@ public class IntegracaoRestIntmatrixchatUsuarioCriarTest {
 //contatoswsCasanova | telefone+553198789856
 //contatoswsCasanova | Senha:2034736859
         ItfRespostaWebServiceSimples resp = FabApiRestIntMatrixChatUsuarios.USUARIO_OBTER_DADOS_BY_EMAIL
-                //.getAcao("wagner@casanovadigital.com.br").getResposta();
-                .getAcao("camila@casanovadigital.com.br").getResposta();
+                .getAcao("auxiliadora@casanovadigital.com.br").getResposta();
         System.out.println(resp.getRespostaTexto());
-        ItfRespostaWebServiceSimples resposta = FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR
-                //        .getAcao(codigoUsuario, slugUsuario, "Wagner Mingote", "wagner@casanovadigital.com.br", "553121159755", "Comunic@=PIX").getResposta();
-                .getAcao(codigoUsuario, slugUsuario, "Camila M. Bissiguini", "camila@casanovadigital.com.br", "553195171605", "Dra.Comunicação01=PIXES").getResposta();
+        ItfRespostaWebServiceSimples resposta = FabApiRestIntMatrixChatUsuarios.USUARIO_ADMIN_CRIAR
+                .getAcao(codigoUsuario, slugUsuario, "Auxiliadora", "auxiliadora@casanovadigital.com.br", "553121159751", "T4!!eKxnXY0Cr^5@9Ha!").getResposta();
         //ItfRespostaWebServiceSimples respostaPesquisa = FabApiRestIntMatrixChatUsuarios.USUARIO_OBTER_DADOS_BY_EMAIL
         //        .getAcao("beatrizesalvio@gmail.com").getResposta();
         //System.out.println(respostaPesquisa.getRespostaTexto());
-        System.out.println(resp.getRespostaTexto());
+
         //ItfRespostaWebServiceSimples resposta = FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR
         //        .getAcao("@beatriz203:casanovadigital.com.br", "teste", "Beatriz", "beatrizesalvio@gmail.com", "+553198789856", "2034736859").getResposta();
         ItfRespostaWebServiceSimples respostaAlteraSenha = FabApiRestIntMatrixChatUsuarios.USUARIO_ATUALIZAR_SENHA
-                .getAcao(codigoUsuario, "renata@Casalover").getResposta();
+                .getAcao(codigoUsuario, "").getResposta();
         System.out.println(respostaAlteraSenha.getRespostaTexto());
         resposta.dispararMensagens();
         System.out.println(resposta.getRespostaTexto());

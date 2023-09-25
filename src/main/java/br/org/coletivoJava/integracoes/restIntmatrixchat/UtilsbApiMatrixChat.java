@@ -35,7 +35,7 @@ public class UtilsbApiMatrixChat {
 
     public static String gerarCodigoBySlugUser(String pUsername) {
 
-        return "@" + pUsername + ":casanovadigital.com.br";
+        return "@" + pUsername.toLowerCase() + ":casanovadigital.com.br";
     }
 
 }

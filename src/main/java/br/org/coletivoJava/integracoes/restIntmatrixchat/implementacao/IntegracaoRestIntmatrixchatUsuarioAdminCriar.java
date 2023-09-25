@@ -14,15 +14,15 @@ import jakarta.json.JsonArrayBuilder;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonObjectBuilder;
 
-@InfoIntegracaoRestIntmatrixchatUsuarios(tipo = FabApiRestIntMatrixChatUsuarios.USUARIO_ATUALIZAR)
-public class IntegracaoRestIntmatrixchatUsuarioAtualizar
+@InfoIntegracaoRestIntmatrixchatUsuarios(tipo = FabApiRestIntMatrixChatUsuarios.USUARIO_ADMIN_CRIAR)
+public class IntegracaoRestIntmatrixchatUsuarioAdminCriar
         extends
         AcaoApiIntegracaoAbstrato {
 
-    public IntegracaoRestIntmatrixchatUsuarioAtualizar(
+    public IntegracaoRestIntmatrixchatUsuarioAdminCriar(
             final FabTipoAgenteClienteApi pTipoAgente,
             final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
-        super(FabApiRestIntMatrixChatUsuarios.USUARIO_ATUALIZAR, pTipoAgente,
+        super(FabApiRestIntMatrixChatUsuarios.USUARIO_ADMIN_CRIAR, pTipoAgente,
                 pUsuario, pParametro);
     }
 
@@ -30,27 +30,39 @@ public class IntegracaoRestIntmatrixchatUsuarioAtualizar
     public String gerarCorpoRequisicao() {
         JsonObjectBuilder jsonBUilder;
         try {
-            String codUsuario = (String) parametros.get(0);
-            String usuario = (String) getParametros()[0].toString().substring(0, getParametros()[0].toString().indexOf(":"));
-            String nome = (String) getParametros()[1].toString().substring(0, getParametros()[0].toString().indexOf(":"));
-            String email = (String) getParametros()[2];
-            String senha = (String) getParametros()[3];
+
+            String usuario = (String) getParametros()[1];
+            String nome = (String) getParametros()[2];
+            String email = (String) getParametros()[3];
+            String telefone = (String) getParametros()[4];
+            String senha = (String) getParametros()[5];
+
+            System.out.println("Criando usuário:");
+            System.out.println("codigo: " + getParametros()[0]);
+            System.out.println("nome: " + nome);
+            System.out.println("email:" + email);
+            System.out.println("telefone" + telefone);
+            System.out.println("Senha:" + senha);
 
             jsonBUilder = UtilSBCoreJson.
                     getJsonBuilderBySequenciaChaveValor(
-                            //      "name", usuarioFormatado,
+                            "username", usuario,
                             "displayname", nome,
                             "password", senha,
                             "avatar_url", UtilSBCoreGravatar.getGravatarUrl(email, 80),
-                            "admin", false,
+                            "admin", true,
                             "deactivated", false
                     //,"access_token", getTokenGestao().getToken()
                     );
 
-            JsonObject threepid = UtilSBCoreJson.getJsonObjectBySequenciaChaveValor("medium", "email", "address", email);
+            JsonObject threepidEmail = UtilSBCoreJson.getJsonObjectBySequenciaChaveValor("medium", "email", "address", email);
             JsonArrayBuilder threepidsBuilder = Json.createArrayBuilder();
-            threepidsBuilder.add(threepid);
+            threepidsBuilder.add(threepidEmail);
+            if (telefone != null) {
+                JsonObject threepidPhone = UtilSBCoreJson.getJsonObjectBySequenciaChaveValor("medium", "msisdn", "address", telefone);
 
+                threepidsBuilder.add(threepidPhone);
+            }
             jsonBUilder.add("threepids", threepidsBuilder.build());
         } catch (ErroProcessandoJson ex) {
             throw new UnsupportedOperationException("Parametros Iválidos");

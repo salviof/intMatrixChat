@@ -4,6 +4,7 @@
  */
 package br.org.coletivoJava.integracoes.matrixChat;
 
+import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatUsuarios;
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoreMatrixChatIntegracao;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import org.coletivojava.fw.api.tratamentoErros.FabErro;
@@ -22,16 +23,4 @@ public class FabApiRestIntMatrixChatUsuariosTest extends TestesApiRest {
     /**
      * Test of values method, of class FabApiRestIntMatrixChatUsuarios.
      */
-    @Test
-    public void testValues() {
-        try {
-
-            SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
-            gerarCodigosChamadasEndpoint(FabApiRestIntMatrixChatUsuarios.class);
-
-        } catch (Throwable t) {
-            SBCore.RelatarErro(FabErro.SOLICITAR_REPARO, t.getMessage(), t);
-        }
-    }
-
 }

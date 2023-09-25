@@ -25,7 +25,7 @@ public class IntegracaoRestIntmatrixchatUsuarioAtualizarSenha
     public String gerarCorpoRequisicao() {
         JsonObjectBuilder jsonBUilder;
         try {
-            String codUsuario = (String) parametros[0];
+            String codUsuario = (String) parametros.get(0);
 
             String senha = (String) getParametros()[1];
 

@@ -73,6 +73,46 @@ public enum FabApiRestIntMatrixChatSalas implements ItfFabricaIntegracaoRest {
             parametrosGet = {"IDuSUARIO"},
             urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
             adicionarAutenticacaoBearer = true)
-    USUARIO_DEFINIR_ADMIN
+    USUARIO_DEFINIR_ADMIN,
+    @InfoConsumoRestService(getPachServico = "/_matrix/client/r0/rooms/{0}/send/m.room.message/{1}",
+            tipoConexao = FabTipoConexaoRest.PUT,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = {"roomId", "CODIGO_UNICOMENSAGEM"},
+            parametrosPost = {"mensagem"},
+            urlDocumentacao
+            = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
+            adicionarAutenticacaoBearer = true
+    )
+    SALA_ENVIAR_MENSAGEM_TEXTO_SIMPLES,
+    @InfoConsumoRestService(getPachServico = "/_matrix/client/r0/rooms/{0}/send/m.room.message/{1}",
+            tipoConexao = FabTipoConexaoRest.PUT,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = {"roomId", "CODIGO_UNICOMENSAGEM"},
+            parametrosPost = {"mensagem"},
+            urlDocumentacao
+            = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
+            adicionarAutenticacaoBearer = true
+    )
+    SALA_ENVIAR_MENSAGEM_IMAGEM,
+    @InfoConsumoRestService(getPachServico = "/_matrix/client/r0/rooms/{0}/send/m.room.message/{1}",
+            tipoConexao = FabTipoConexaoRest.PUT,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = {"roomId", "CODIGO_UNICOMENSAGEM"},
+            parametrosPost = {"mensagem"},
+            urlDocumentacao
+            = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
+            adicionarAutenticacaoBearer = true
+    )
+    SALA_ENVIAR_MENSAGEM_VIDEO,
+    @InfoConsumoRestService(getPachServico = "/_matrix/client/r0/rooms/{0}/send/m.room.message/{1}",
+            tipoConexao = FabTipoConexaoRest.PUT,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = {"roomId", "CODIGO_UNICOMENSAGEM"},
+            parametrosPost = {"mensagem"},
+            urlDocumentacao
+            = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
+            adicionarAutenticacaoBearer = true
+    )
+    SALA_ENVIAR_MENSAGEM_AUDIO;
 
 }

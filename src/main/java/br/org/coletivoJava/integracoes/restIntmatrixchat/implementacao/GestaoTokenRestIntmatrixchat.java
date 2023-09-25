@@ -83,6 +83,9 @@ public class GestaoTokenRestIntmatrixchat extends GestaoTokenDinamico {
         if (usuarioLogin != null) {
             RespostaWebServiceSimples resposta = UtilSBApiRestClient.getRespostaRest(url, FabTipoConexaoRest.POST, true,
                     new HashMap<>(), corpo);
+            if (resposta == null) {
+                return null;
+            }
             UtilMatrixApiServer.gerarRespostaWSTratamentoFino(resposta);
             if (resposta.isSucesso()) {
                 JsonObject jsonArquivado = resposta.getRespostaComoObjetoJson();

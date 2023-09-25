@@ -35,6 +35,14 @@ public enum FabApiRestIntMatrixChatUsuarios implements ItfFabricaIntegracaoRest 
             tipoConexao = FabTipoConexaoRest.PUT,
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
             parametrosGet = {"useride"},
+            parametrosPost = {"username", "email", "password"},
+            urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
+            adicionarAutenticacaoBearer = true)
+    USUARIO_ADMIN_CRIAR,
+    @InfoConsumoRestService(getPachServico = "/_synapse/admin/v2/users/{0}",
+            tipoConexao = FabTipoConexaoRest.PUT,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = {"useride"},
             parametrosPost = {"username", "password"},
             urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html")
     USUARIO_ATUALIZAR_SENHA,
@@ -54,6 +62,13 @@ public enum FabApiRestIntMatrixChatUsuarios implements ItfFabricaIntegracaoRest 
             urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
             adicionarAutenticacaoBearer = true)
     USUARIO_OBTER_DADOS,
+    @InfoConsumoRestService(getPachServico = "/_synapse/admin/v1/threepid/msisdn/users/{0}",
+            tipoConexao = FabTipoConexaoRest.GET,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = {"emailusuario"},
+            urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
+            adicionarAutenticacaoBearer = true)
+    USUARIO_OBTER_DADOS_BY_TELEFONE,
     @InfoConsumoRestService(getPachServico = "/_synapse/admin/v1/threepid/email/users/{0}",
             tipoConexao = FabTipoConexaoRest.GET,
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,

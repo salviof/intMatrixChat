@@ -21,8 +21,8 @@ public class IntegracaoRestIntmatrixchatSalaCriar
     @Override
     public String gerarCorpoRequisicao() {
 
-        String apelidoSala = (String) parametros[0];//thepub
-        String nomeSala = (String) parametros[1];//The Grand Duke Pub
+        String apelidoSala = (String) parametros.get(0);//thepub
+        String nomeSala = (String) parametros.get(0);//The Grand Duke Pub
 
         String corpo = "{\n"
                 + "  \"preset\": \"public_chat\",\n"

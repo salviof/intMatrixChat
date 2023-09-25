@@ -6,8 +6,6 @@ package com.super_bits.Super_Bits.mktMauticIntegracao.configAppp;
 
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatUsuarios;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
-import junit.framework.Assert;
 import org.coletivojava.fw.api.tratamentoErros.FabErro;
 import org.junit.Test;
 import testes.testesSupers.TestesApiRest;

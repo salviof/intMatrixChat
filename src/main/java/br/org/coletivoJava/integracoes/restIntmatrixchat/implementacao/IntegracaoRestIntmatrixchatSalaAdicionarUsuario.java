@@ -21,8 +21,8 @@ public class IntegracaoRestIntmatrixchatSalaAdicionarUsuario
     @Override
     public String gerarCorpoRequisicao() {
 
-        String grupo = (String) parametros[0];
-        String usuario = (String) parametros[1];
+        String grupo = (String) parametros.get(0);
+        String usuario = (String) parametros.get(1);
         String corpo = "{\n"
                 + "  \"user_id\": \"" + usuario + "\"\n"
                 + "}";

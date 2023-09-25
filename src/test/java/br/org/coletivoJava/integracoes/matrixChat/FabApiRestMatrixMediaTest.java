@@ -4,35 +4,38 @@
  */
 package br.org.coletivoJava.integracoes.matrixChat;
 
-import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatSalas;
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoreMatrixChatIntegracao;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import org.coletivojava.fw.api.tratamentoErros.FabErro;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
 import testes.testesSupers.TestesApiRest;
 
 /**
  *
  * @author salvio
  */
-public class FabApiRestIntMatrixChatSalasTest extends TestesApiRest {
+public class FabApiRestMatrixMediaTest extends TestesApiRest {
 
-    public FabApiRestIntMatrixChatSalasTest() {
+    public FabApiRestMatrixMediaTest() {
     }
 
     /**
-     * Test of values method, of class FabApiRestIntMatrixChatSalas.
+     * Test of valueOf method, of class FabApiRestMatrixMedia.
      */
     @Test
     public void testValues() {
         try {
 
             SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
-            gerarCodigosChamadasEndpoint(FabApiRestIntMatrixChatSalas.class);
+            gerarCodigosChamadasEndpoint(FabApiRestMatrixMedia.class);
 
         } catch (Throwable t) {
             SBCore.RelatarErro(FabErro.SOLICITAR_REPARO, t.getMessage(), t);
         }
     }
-
 }
