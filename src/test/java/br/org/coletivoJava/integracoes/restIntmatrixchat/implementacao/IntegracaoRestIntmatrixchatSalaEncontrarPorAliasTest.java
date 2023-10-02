@@ -5,37 +5,35 @@
 package br.org.coletivoJava.integracoes.restIntmatrixchat.implementacao;
 
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatSalas;
-import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatUsuarios;
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoreMatrixChatIntegracao;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.ItfTokenGestao;
-import junit.framework.Assert;
 import org.junit.Test;
 
 /**
  *
  * @author salvio
  */
-public class IntegracaoRestIntmatrixchatSalaEncontrarPorIdTest {
+public class IntegracaoRestIntmatrixchatSalaEncontrarPorAliasTest {
 
-    public IntegracaoRestIntmatrixchatSalaEncontrarPorIdTest() {
+    public IntegracaoRestIntmatrixchatSalaEncontrarPorAliasTest() {
     }
 
     @Test
     public void testSomeMethod() {
-
         SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
-        ItfTokenGestao tokenEcontrarById = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_ID.getGestaoToken();
+        ItfTokenGestao tokenEcontrarById = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_NOME.getGestaoToken();
         if (!tokenEcontrarById.isTemTokemAtivo()) {
             tokenEcontrarById.gerarNovoToken();
         }
-        ItfRespostaWebServiceSimples resposta = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_ID.getAcao("!xnlMIZLTTrCHdHUAxI:casanovadigital.com.br").getResposta();
-        resposta.dispararMensagens();
-        Assert.assertTrue("Falha criando usuário" + resposta.getRespostaTexto(), resposta.isSucesso());
-        System.out.println(resposta.getCodigoResposta());
+        ItfRespostaWebServiceSimples resposta = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_NOME.getAcao("apenasTeste").getResposta();
         System.out.println(resposta.getRespostaTexto());
-
+        String roomID = resposta.getRespostaComoObjetoJson().get("rooms").asJsonArray().get(0).asJsonObject().getString("room_id");
+        ItfRespostaWebServiceSimples respostaAlias2 = FabApiRestIntMatrixChatSalas.SALA_VINCULAR_APELIDO_SALA_AO_ID.getAcao("#APELIDO_APENAS_TESTE2:casanovadigital.com.br", roomID).getResposta();
+        System.out.println(respostaAlias2.getRespostaTexto());
+        ItfRespostaWebServiceSimples respostaBuscaPeloAlias = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_ALIAS.getAcao("#APELIDO_APENAS_TEST:casanovadigital.com.br").getResposta();
+        System.out.println(respostaBuscaPeloAlias.getRespostaTexto());
     }
 
 }

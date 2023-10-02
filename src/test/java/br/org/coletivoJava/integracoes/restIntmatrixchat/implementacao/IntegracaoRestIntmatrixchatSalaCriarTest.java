@@ -24,13 +24,22 @@ public class IntegracaoRestIntmatrixchatSalaCriarTest {
     @Test
     public void testSomeMethod() {
         SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
+
+        String teste = "#teste:casanovadigital.com.br";
+        teste = teste.substring(1, teste.indexOf(":"));
+        System.out.println(teste);
         ItfTokenGestao tokenEcontrarById = FabApiRestIntMatrixChatSalas.SALA_CRIAR.getGestaoToken();
         if (!tokenEcontrarById.isTemTokemAtivo()) {
             tokenEcontrarById.gerarNovoToken();
         }
-        ItfRespostaWebServiceSimples resposta = FabApiRestIntMatrixChatSalas.SALA_CRIAR.getAcao("apenasTeste", "Apenas teste").getResposta();
+        ItfRespostaWebServiceSimples resposta = FabApiRestIntMatrixChatSalas.SALA_CRIAR.getAcao("Apenas Teste", "Apenasteste12", "#espaço_testes:casanovadigital.com.br").getResposta();
+        System.out.println(resposta.getRespostaTexto());
         resposta.dispararMensagens();
         Assert.assertTrue("Falha criando usuário" + resposta.getRespostaTexto(), resposta.isSucesso());
+
+        System.out.println(resposta.getCodigoResposta());
+        System.out.println(resposta.getRespostaTexto());
+        resposta = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_ALIAS.getAcao("#Apenasteste10:casanovadigital.com.br").getResposta();
         System.out.println(resposta.getCodigoResposta());
         System.out.println(resposta.getRespostaTexto());
 

@@ -22,7 +22,8 @@ public enum FabConfigApiMatrixChat implements ItfFabConfigModulo {
     @InfoPropriedadeConfigRestIntegracao(tipoPropriedade = FabPropriedadeModuloIntegracaoOauth.USUARIO)
     USUARIO_ADMIN,
     @InfoPropriedadeConfigRestIntegracao(tipoPropriedade = FabPropriedadeModuloIntegracaoOauth.SENHA)
-    SENHA_USUARIO_ADMIN,;
+    SENHA_USUARIO_ADMIN,
+    DOMINIO_FEDERADO;
     /**
      * https://api.galaxpay.com.br/v2, ou
      * https://api.sandbox.cloud.galaxpay.com.br/v2

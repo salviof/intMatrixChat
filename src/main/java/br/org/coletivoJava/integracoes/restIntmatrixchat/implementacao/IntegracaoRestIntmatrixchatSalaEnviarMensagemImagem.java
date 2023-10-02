@@ -35,7 +35,7 @@ public class IntegracaoRestIntmatrixchatSalaEnviarMensagemImagem
 
     @Override
     public String gerarCorpoRequisicao() {
-        String pMensagem = (String) parametros.get(1);
+        String pMensagem = (String) parametros.get(2);
         String url = (String) parametros.get(3);
 
         String corpo

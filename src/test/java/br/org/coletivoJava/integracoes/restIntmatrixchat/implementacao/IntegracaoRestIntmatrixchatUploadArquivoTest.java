@@ -42,7 +42,7 @@ public class IntegracaoRestIntmatrixchatUploadArquivoTest {
         //"#wtzapsolucao553184178550:casanovadigital.com.br";//
 
         JsonObject salaJsonEntregada = getSalaByNome(NOME_SALA);
-        String codigoSala;
+        String codigoSala = "";
         if (salaJsonEntregada != null) {
             codigoSala = salaJsonEntregada.getString("room_id");
 
@@ -63,7 +63,7 @@ public class IntegracaoRestIntmatrixchatUploadArquivoTest {
         String uriImagem = resp.getRespostaComoObjetoJson().getString("content_uri");
 
         ItfRespostaWebServiceSimples respEnvioImagem = FabApiRestIntMatrixChatSalas.SALA_ENVIAR_MENSAGEM_IMAGEM.
-                getAcao("teste envio",
+                getAcao(codigoSala, null, "Mensagem teste updates",
                         uriImagem)
                 .getResposta();
         System.out.println(respEnvioImagem.getRespostaTexto());

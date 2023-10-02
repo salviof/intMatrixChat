@@ -16,7 +16,7 @@ import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.importacao.FabTip
  *
  * @author salvio
  */
-@InfoConfigRestClientIntegracao(enderecosDocumentacao = "https://docs.galaxpay.com.br/",
+@InfoConfigRestClientIntegracao(enderecosDocumentacao = "https://spec.matrix.org/v1.8/client-server-api/",
         tipoAutenticacao = FabTipoAutenticacaoRest.CHAVE_ACESSO_METODOLOGIA_PROPRIA,
         nomeIntegracao = FabConfigApiMatrixChat.NOME_INTEGRACAO,
         configuracao = FabConfigApiMatrixChat.class
@@ -97,5 +97,12 @@ public enum FabApiRestIntMatrixChatUsuarios implements ItfFabricaIntegracaoRest 
             urlDocumentacao = "https://www.matrix.org/docs/api/#get-/_matrix/client/v3/presence/-userId-/status",
             adicionarAutenticacaoBearer = true)
     USUARIOS_STATUS,
+    @InfoConsumoRestService(getPachServico = "/_synapse/admin/v2/users/{0}",
+            tipoConexao = FabTipoConexaoRest.GET,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = {"IDuSUARIO"},
+            urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
+            adicionarAutenticacaoBearer = true)
+    USUARIO_DEFINIR_ADMIN,
 
 }

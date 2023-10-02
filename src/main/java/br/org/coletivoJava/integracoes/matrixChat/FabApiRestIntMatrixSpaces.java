@@ -21,21 +21,23 @@ import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.importacao.FabTip
         nomeIntegracao = FabConfigApiMatrixChat.NOME_INTEGRACAO,
         configuracao = FabConfigApiMatrixChat.class
 )
-public enum FabApiRestMatrixNotificacoes implements ItfFabricaIntegracaoRest {
-
-    @InfoConsumoRestService(getPachServico = "/_matrix/client/v3/notifications?limit=10&from={0}",
-            tipoConexao = FabTipoConexaoRest.GET,
+public enum FabApiRestIntMatrixSpaces implements ItfFabricaIntegracaoRest {
+    // https://matrix.casanovadigital.com.br   /_matrix/client/v3/rooms/!WNxhqanyFQutrEgzmc%3Acasanovadigital.com.br/state/m.space.child/!DSWyNGIiCEINZHBych%3Acasanovadigital.com.br
+    @InfoConsumoRestService(getPachServico = "/_matrix/client/v3/rooms/{0}/state/m.space.child/{1}",
+            tipoConexao = FabTipoConexaoRest.PUT,
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
-            parametrosGet = {"from"},
-            urlDocumentacao = "https://spec.matrix.org/v1.8/client-server-api/#listing-notifications",
-            adicionarAutenticacaoBearer = true)
-    MINHAS_NOTIFICACOES_LISTAR,
-    @InfoConsumoRestService(getPachServico = "/_matrix/client/v3/sync?limit=10&from={0}",
-            tipoConexao = FabTipoConexaoRest.GET,
+            parametrosGet = {"roomId", "roomFilhoID"},
+            urlDocumentacao
+            = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
+            adicionarAutenticacaoBearer = true
+    )
+    ESPACO_ADICIONAR_FILHO_DO_ESPACO,
+    @InfoConsumoRestService(getPachServico = "/_matrix/client/v3/createRoom",
+            tipoConexao = FabTipoConexaoRest.POST,
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
-            parametrosGet = {"from"},
-            urlDocumentacao = "https://spec.matrix.org/v1.8/client-server-api/#listing-notifications",
+            parametrosPost = {"nome", "apelido"},
+            urlDocumentacao = "https://ma1uta.github.io/spec/client_server/unstable.html#post-matrix-client-r0-createroom",
             adicionarAutenticacaoBearer = true)
-    MEUS_EVENTOS_SINCRONIZAR,
+    ESPACO_CRIAR,
 
 }

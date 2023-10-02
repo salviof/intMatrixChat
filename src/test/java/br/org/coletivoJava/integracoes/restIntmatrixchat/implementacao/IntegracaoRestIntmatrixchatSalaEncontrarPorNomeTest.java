@@ -30,13 +30,24 @@ public class IntegracaoRestIntmatrixchatSalaEncontrarPorNomeTest {
     public void testSomeMethod() {
         // TODO review the generated test code and remove the default call to fail.
         SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
-        ItfTokenGestao tokenEcontrarById = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_ID.getGestaoToken();
+        ItfTokenGestao tokenEcontrarById = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_NOME.getGestaoToken();
         if (!tokenEcontrarById.isTemTokemAtivo()) {
             tokenEcontrarById.gerarNovoToken();
         }
+
         ItfRespostaWebServiceSimples resposta = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_NOME.getAcao("apenasTeste").getResposta();
+        System.out.println(resposta.getRespostaTexto());
+        String roomID = resposta.getRespostaComoObjetoJson().get("rooms").asJsonArray().get(0).asJsonObject().getString("room_id");
+        ItfRespostaWebServiceSimples respApelidos = FabApiRestIntMatrixChatSalas.SALA_ALIASES.getAcao(roomID).getResposta();
+        ItfRespostaWebServiceSimples respostaAlias = FabApiRestIntMatrixChatSalas.SALA_VINCULAR_APELIDO_SALA_AO_ID.getAcao("APELIDO_APENAS_TESTE3:casanovadigital.com.br", roomID).getResposta();
+        ItfRespostaWebServiceSimples respostaAlias2 = FabApiRestIntMatrixChatSalas.SALA_VINCULAR_APELIDO_SALA_AO_ID.getAcao("#APELIDO_APENAS_TESTE2:casanovadigital.com.br", roomID).getResposta();
+        System.out.println(respostaAlias.getRespostaTexto());
+        ItfRespostaWebServiceSimples respostaBuscaPeloAlias = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_ALIAS.getAcao("#APELIDO_APENAS_TESTE:casanovadigital.com.br").getResposta();
+        System.out.println(respostaBuscaPeloAlias.getRespostaTexto());
+        respostaBuscaPeloAlias = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_ALIAS.getAcao("#APELIDO_APENAS_TESTE2:casanovadigital.com.br").getResposta();
+        System.out.println(respostaBuscaPeloAlias.getRespostaTexto());
         resposta.dispararMensagens();
-        Assert.assertTrue("Falha criando usuário" + resposta.getRespostaTexto(), resposta.isSucesso());
+        Assert.assertTrue("Falha obtendo sala" + resposta.getRespostaTexto(), resposta.isSucesso());
         System.out.println(resposta.getCodigoResposta());
         System.out.println(resposta.getRespostaTexto());
     }

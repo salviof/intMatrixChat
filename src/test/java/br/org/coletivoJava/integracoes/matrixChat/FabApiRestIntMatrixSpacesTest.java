@@ -14,20 +14,26 @@ import testes.testesSupers.TestesApiRest;
  *
  * @author salvio
  */
-public class FabApiRestMatrixNotificacoesTest extends TestesApiRest {
+public class FabApiRestIntMatrixSpacesTest extends TestesApiRest {
 
-    public FabApiRestMatrixNotificacoesTest() {
+    public FabApiRestIntMatrixSpacesTest() {
     }
 
+    /**
+     * Test of values method, of class FabApiRestIntMatrixSpaces.
+     */
     @Test
     public void testValues() {
+
         try {
 
             SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
-            gerarCodigosChamadasEndpoint(FabApiRestMatrixNotificacoes.class);
+            gerarCodigosChamadasEndpoint(FabApiRestIntMatrixSpaces.class);
 
         } catch (Throwable t) {
             SBCore.RelatarErro(FabErro.SOLICITAR_REPARO, t.getMessage(), t);
         }
+
     }
+
 }

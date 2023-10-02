@@ -16,7 +16,7 @@ import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.importacao.FabTip
  *
  * @author salvio
  */
-@InfoConfigRestClientIntegracao(enderecosDocumentacao = "https://docs.galaxpay.com.br/",
+@InfoConfigRestClientIntegracao(enderecosDocumentacao = "https://spec.matrix.org/v1.8/client-server-api/",
         tipoAutenticacao = FabTipoAutenticacaoRest.CHAVE_ACESSO_METODOLOGIA_PROPRIA,
         nomeIntegracao = FabConfigApiMatrixChat.NOME_INTEGRACAO,
         configuracao = FabConfigApiMatrixChat.class

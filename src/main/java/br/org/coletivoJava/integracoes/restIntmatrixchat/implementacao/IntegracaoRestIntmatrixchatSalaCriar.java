@@ -20,15 +20,17 @@ public class IntegracaoRestIntmatrixchatSalaCriar
 
     @Override
     public String gerarCorpoRequisicao() {
-
-        String apelidoSala = (String) parametros.get(0);//thepub
         String nomeSala = (String) parametros.get(0);//The Grand Duke Pub
+        String apelidoSala = (String) parametros.get(1);//thepub
+        if (apelidoSala.contains(":")) {
+            apelidoSala = apelidoSala.substring(1, apelidoSala.indexOf(":"));
+        }
 
         String corpo = "{\n"
                 + "  \"preset\": \"public_chat\",\n"
-                + "  \"room_alias_name\": \"" + apelidoSala + "\",\n"
                 + "  \"name\": \"" + nomeSala + "\",\n"
-                //        + "  \"topic\": \"" + topico + "\",\n"
+                + "  \"room_alias_name\": \"" + apelidoSala + "\",\n"
+                ///                + "  \"topic\": \"" + topico + "\",\n"
                 + "  \"creation_content\": {\n"
                 + "    \"m.federate\": false\n"
                 + "  }\n"

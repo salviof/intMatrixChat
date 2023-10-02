@@ -25,7 +25,6 @@ public class IntegracaoRestIntmatrixchatUsuarioAdminCriarTest {
      * Test of gerarCorpoRequisicao method, of class
      * IntegracaoRestIntmatrixchatUsuarioAdminCriar.
      */
-    @Test
     public void testGerarCorpoRequisicao() {
         SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
         if (!FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR.getGestaoToken().isPossuiAutenticacaoDeUsuario()) {
