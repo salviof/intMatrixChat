@@ -21,7 +21,9 @@ public class IntegracaoRestIntmatrixchatUsuarioObterDadosTest {
     public void testSomeMethod() {
         SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
         GestaoTokenRestIntmatrixchat gtoke = (GestaoTokenRestIntmatrixchat) FabApiRestIntMatrixChatUsuarios.USUARIO_OBTER_DADOS.getGestaoToken();
+        System.out.println(gtoke.getToken());
         ItfRespostaWebServiceSimples resposta = FabApiRestIntMatrixChatUsuarios.USUARIO_OBTER_DADOS.getAcao(gtoke.getUserID()).getResposta();
+
         resposta.dispararMensagens();
         Assert.assertTrue("Falha criando usuário" + resposta.getRespostaTexto(), resposta.isSucesso());
         System.out.println(resposta.getRespostaTexto());

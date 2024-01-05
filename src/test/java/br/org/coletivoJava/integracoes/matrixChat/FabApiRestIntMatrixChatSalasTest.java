@@ -17,9 +17,6 @@ import testes.testesSupers.TestesApiRest;
  */
 public class FabApiRestIntMatrixChatSalasTest extends TestesApiRest {
 
-    public FabApiRestIntMatrixChatSalasTest() {
-    }
-
     /**
      * Test of values method, of class FabApiRestIntMatrixChatSalas.
      */
@@ -33,6 +30,9 @@ public class FabApiRestIntMatrixChatSalasTest extends TestesApiRest {
         } catch (Throwable t) {
             SBCore.RelatarErro(FabErro.SOLICITAR_REPARO, t.getMessage(), t);
         }
+    }
+
+    public FabApiRestIntMatrixChatSalasTest() {
     }
 
 }

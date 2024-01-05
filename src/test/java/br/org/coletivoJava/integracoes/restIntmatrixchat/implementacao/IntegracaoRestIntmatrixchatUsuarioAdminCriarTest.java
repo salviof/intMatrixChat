@@ -27,7 +27,7 @@ public class IntegracaoRestIntmatrixchatUsuarioAdminCriarTest {
      */
     public void testGerarCorpoRequisicao() {
         SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
-        if (!FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR.getGestaoToken().isPossuiAutenticacaoDeUsuario()) {
+        if (!FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR.getGestaoToken().isTemTokemAtivo()) {
             FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR.getGestaoToken().gerarNovoToken();
         }
         String slugUsuario = "auxiliadora";

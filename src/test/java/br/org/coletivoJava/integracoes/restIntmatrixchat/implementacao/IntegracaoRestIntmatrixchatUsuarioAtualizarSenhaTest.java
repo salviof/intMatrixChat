@@ -31,7 +31,7 @@ public class IntegracaoRestIntmatrixchatUsuarioAtualizarSenhaTest {
     @Test
     public void testGerarCorpoRequisicao() {
         SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
-        if (!FabApiRestIntMatrixChatUsuarios.USUARIO_ATUALIZAR_SENHA.getGestaoToken().isPossuiAutenticacaoDeUsuario()) {
+        if (!FabApiRestIntMatrixChatUsuarios.USUARIO_ATUALIZAR_SENHA.getGestaoToken().isTemTokemAtivo()) {
             FabApiRestIntMatrixChatUsuarios.USUARIO_ATUALIZAR_SENHA.getGestaoToken().gerarNovoToken();
         }
 

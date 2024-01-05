@@ -9,9 +9,11 @@ import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreDataHora;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
 import com.super_bits.modulosSB.SBCore.UtilGeral.json.ErroProcessandoJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.FabTipoConexaoRest;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.RespostaWebServiceSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.ItfTokenDeAcessoExterno;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.ItfGestaoTokenDinamico;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.TokenDeAcessoExternoDinamico;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.TokenDeAcessoExternoSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBApiRestClient;
@@ -37,7 +39,15 @@ public class GestaoTokenRestIntmatrixchat extends GestaoTokenDinamico {
 
     @Override
     public boolean validarToken() {
-
+        if (isTemTokemAtivo()) {
+            ItfRespostaWebServiceSimples statusUsuario = FabApiRestIntMatrixChatUsuarios.USUARIO_PROFILE.getAcao(userID).getResposta();
+            if (!SBCore.isEmModoProducao()) {
+                if (!statusUsuario.isSucesso()) {
+                    System.out.println(statusUsuario.getRespostaTexto());
+                }
+            }
+            return statusUsuario.isSucesso();
+        }
         return isTemTokemAtivo();
     }
 
@@ -48,7 +58,7 @@ public class GestaoTokenRestIntmatrixchat extends GestaoTokenDinamico {
     }
 
     @Override
-    public ItfTokenDeAcessoExterno gerarNovoToken() {
+    public synchronized ItfTokenDeAcessoExterno gerarNovoToken() {
         String url = configuracao.getPropriedade(FabConfigApiMatrixChat.URL_MATRIX_SERVER) + "/_matrix/client/v3/login";
 
         String usuarioLogin = null;
@@ -72,7 +82,15 @@ public class GestaoTokenRestIntmatrixchat extends GestaoTokenDinamico {
         String corpo = "";
         try {
             buider = UtilSBCoreJson.getJsonBuilderBySequenciaChaveValor("type", "m.login.password");
-            JsonObject tipoIdentificador = UtilSBCoreJson.getJsonObjectBySequenciaChaveValor("type", "m.id.user", "user", usuarioLogin);
+            JsonObject tipoIdentificador;
+            if (usuarioLogin.substring(1, usuarioLogin.length() - 1).contains("@")) {
+                tipoIdentificador = UtilSBCoreJson.getJsonObjectBySequenciaChaveValor("type", "m.id.thirdparty",
+                        "medium", "email",
+                        "address", usuarioLogin);
+            } else {
+                tipoIdentificador = UtilSBCoreJson.getJsonObjectBySequenciaChaveValor("type", "m.id.user", "user", usuarioLogin);
+            }
+
             buider.add("identifier", tipoIdentificador);
             buider.add("password", senhaLogin);
             corpo = UtilSBCoreJson.getTextoByJsonObjeect(buider.build());
@@ -94,12 +112,22 @@ public class GestaoTokenRestIntmatrixchat extends GestaoTokenDinamico {
                 armazenarRespostaToken(UtilSBCoreJson.getTextoByJsonObjeect(jsonArquivado));
             } else {
                 if (!SBCore.isEmModoProducao()) {
+
                     //  resposta.dispararMensagens();
                 }
+                System.out.println("Erro autenticando com  " + usuarioLogin);
+                System.out.println(corpo);
+                System.out.println(resposta.getRespostaTexto());
                 //     SBCore.enviarAvisoAoUsuario("Usuário ou senha inválida, verifique suas credenciais em " + getConfig().getPropriedade(FabConfigApiMatrixChat.URL_MATRIX_SERVER));
             }
         }
         return loadTokenArmazenado();
+    }
+
+    @Override
+    public ItfTokenDeAcessoExterno renovarToken() {
+
+        return super.renovarToken(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 
     @Override
@@ -109,7 +137,7 @@ public class GestaoTokenRestIntmatrixchat extends GestaoTokenDinamico {
         if (pJson.containsKey("dataHora")) {
 
             Date dataHoraGeracaoToken = new Date((long) pJson.getJsonNumber("dataHora").longValue());
-            dataHoraExipira = UtilSBCoreDataHora.incrementaHoras(dataHoraGeracaoToken, 6);
+            dataHoraExipira = UtilSBCoreDataHora.incrementaHoras(dataHoraGeracaoToken, 756);
         }
         deviceId = pJson.getString("device_id");
         homeServer = pJson.getString("home_server");

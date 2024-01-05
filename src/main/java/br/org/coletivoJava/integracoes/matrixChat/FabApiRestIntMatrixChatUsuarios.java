@@ -54,6 +54,20 @@ public enum FabApiRestIntMatrixChatUsuarios implements ItfFabricaIntegracaoRest 
             urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
             adicionarAutenticacaoBearer = true)
     USUARIO_ATUALIZAR,
+    @InfoConsumoRestService(getPachServico = "/_synapse/admin/v2/users/{0}",
+            tipoConexao = FabTipoConexaoRest.PUT,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = {"useride"},
+            parametrosPost = {"novoID"},
+            urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
+            adicionarAutenticacaoBearer = true)
+    USUARIO_ATUALIZAR_ID,
+    @InfoConsumoRestService(getPachServico = "/_synapse/admin/v1/deactivate/{0}",
+            tipoConexao = FabTipoConexaoRest.POST,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = {"codigoUsuario"},
+            urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
+            adicionarAutenticacaoBearer = true)
     USUARIO_REMOVER,
     @InfoConsumoRestService(getPachServico = "/_synapse/admin/v2/users/{0}",
             tipoConexao = FabTipoConexaoRest.GET,
@@ -104,5 +118,12 @@ public enum FabApiRestIntMatrixChatUsuarios implements ItfFabricaIntegracaoRest 
             urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
             adicionarAutenticacaoBearer = true)
     USUARIO_DEFINIR_ADMIN,
+    @InfoConsumoRestService(getPachServico = "/_matrix/client/v3/profile/{0}",
+            tipoConexao = FabTipoConexaoRest.GET,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = {"IDuSUARIO"},
+            urlDocumentacao = "https://www.matrix.org/docs/api/#get-/_matrix/client/v3/presence/-userId-/status",
+            adicionarAutenticacaoBearer = true)
+    USUARIO_PROFILE,
 
 }

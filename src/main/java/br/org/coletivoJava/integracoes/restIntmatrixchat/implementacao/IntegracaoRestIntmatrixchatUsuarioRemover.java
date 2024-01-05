@@ -8,13 +8,21 @@ import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basic
 
 @InfoIntegracaoRestIntmatrixchatUsuarios(tipo = FabApiRestIntMatrixChatUsuarios.USUARIO_REMOVER)
 public class IntegracaoRestIntmatrixchatUsuarioRemover
-		extends
-			AcaoApiIntegracaoAbstrato {
+        extends
+        AcaoApiIntegracaoAbstrato {
 
-	public IntegracaoRestIntmatrixchatUsuarioRemover(
-			final FabTipoAgenteClienteApi pTipoAgente,
-			final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
-		super(FabApiRestIntMatrixChatUsuarios.USUARIO_REMOVER, pTipoAgente,
-				pUsuario, pParametro);
-	}
+    public IntegracaoRestIntmatrixchatUsuarioRemover(
+            final FabTipoAgenteClienteApi pTipoAgente,
+            final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
+        super(FabApiRestIntMatrixChatUsuarios.USUARIO_REMOVER, pTipoAgente,
+                pUsuario, pParametro);
+    }
+
+    @Override
+    public String gerarCorpoRequisicao() {
+        return "{\n"
+                + "    \"erase\": true\n"
+                + "}";
+    }
+
 }

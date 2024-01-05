@@ -8,7 +8,6 @@ import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatUsuario
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoreMatrixChatIntegracao;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
-import junit.framework.Assert;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,22 +19,25 @@ import static org.junit.Assert.*;
  *
  * @author salvio
  */
-public class IntegracaoRestIntmatrixchatUsuariosStatusTest {
+public class IntegracaoRestIntmatrixchatUsuarioAtualizarIdTest {
 
-    public IntegracaoRestIntmatrixchatUsuariosStatusTest() {
+    public IntegracaoRestIntmatrixchatUsuarioAtualizarIdTest() {
     }
 
+    /**
+     * Test of gerarCorpoRequisicao method, of class
+     * IntegracaoRestIntmatrixchatUsuarioAtualizarId.
+     */
     @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
+    public void testGerarCorpoRequisicao() {
+
         SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
-        GestaoTokenRestIntmatrixchat gtoke = (GestaoTokenRestIntmatrixchat) FabApiRestIntMatrixChatUsuarios.USUARIOS_STATUS.getGestaoToken();
-        if (!gtoke.isTemTokemAtivo()) {
-            gtoke.gerarNovoToken();
+        if (!FabApiRestIntMatrixChatUsuarios.USUARIO_ATUALIZAR_ID.getGestaoToken().isTemTokemAtivo()) {
+            FabApiRestIntMatrixChatUsuarios.USUARIO_ATUALIZAR_ID.getGestaoToken().gerarNovoToken();
         }
-        ItfRespostaWebServiceSimples resposta = FabApiRestIntMatrixChatUsuarios.USUARIOS_STATUS.getAcao(gtoke.getUserID()).getResposta();
-        resposta.dispararMensagens();
-        Assert.assertTrue("Falha criando usuário" + resposta.getRespostaTexto(), resposta.isSucesso());
+
+        ItfRespostaWebServiceSimples respostaAdmin = FabApiRestIntMatrixChatUsuarios.USUARIO_DEFINIR_ADMIN.getAcao("@salvio_furbino930:casanovadigital.com.br").getResposta();
+        ItfRespostaWebServiceSimples resposta = FabApiRestIntMatrixChatUsuarios.USUARIO_ATUALIZAR_ID.getAcao("@salvio_furbino930:casanovadigital.com.br", "@salvio_furbino930RN:casanovadigital.com.br").getResposta();
         System.out.println(resposta.getRespostaTexto());
     }
 

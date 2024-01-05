@@ -24,9 +24,17 @@ public class IntegracaoRestIntmatrixchatUsuarioCriarTest {
     @Test
     public void testSomeMethod() {
         SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
-        if (!FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR.getGestaoToken().isPossuiAutenticacaoDeUsuario()) {
+        if (!FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR.getGestaoToken().isTemTokemAtivo()) {
             FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR.getGestaoToken().gerarNovoToken();
         }
+        System.out.println(FabApiRestIntMatrixChatUsuarios.USUARIO_REMOVER.getAcao("@salvio2:casanovadigital.com.br").getResposta().getRespostaTexto());
+
+        ItfRespostaWebServiceSimples respostaTeste1 = FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR
+                //        .getAcao(codigoUsuario, slugUsuario, "Wagner Mingote", "wagner@casanovadigital.com.br", "553121159755", "Comunic@=PIX").getResposta();
+                .getAcao("@salvio_furbino930:casanovadigital.com.br", "Sálvio Fubino", "Salvio", "salvio@casanovadigital.com.br", "5531984178550", "semSenha@123").getResposta();
+
+        System.out.println(respostaTeste1.getRespostaTexto());
+
         String slugUsuario = "camila_bissiguini";
         String codigoUsuario = UtilsbApiMatrixChat.gerarCodigoBySlugUser(slugUsuario);
 

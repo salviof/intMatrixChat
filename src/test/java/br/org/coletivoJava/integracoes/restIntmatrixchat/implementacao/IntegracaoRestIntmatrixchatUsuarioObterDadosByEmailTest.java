@@ -32,7 +32,11 @@ public class IntegracaoRestIntmatrixchatUsuarioObterDadosByEmailTest {
         if (!gtoke.isTemTokemAtivo()) {
             gtoke.gerarNovoToken();
         }
-        ItfRespostaWebServiceSimples resposta = FabApiRestIntMatrixChatUsuarios.USUARIO_OBTER_DADOS_BY_EMAIL.getAcao("renata.mota@casanovadigital.com.br").getResposta();
+        System.out.println(FabApiRestIntMatrixChatUsuarios.USUARIO_REMOVER
+                .getAcao("@salvio_furbino-19:casanovadigital.com.br").getResposta().getRespostaTexto()
+        );
+
+        ItfRespostaWebServiceSimples resposta = FabApiRestIntMatrixChatUsuarios.USUARIO_OBTER_DADOS_BY_EMAIL.getAcao("camilambissiguini@gmail.com").getResposta();
         System.out.println(resposta.getRespostaTexto());
         String userId = resposta.getRespostaComoObjetoJson().getString("user_id");
 

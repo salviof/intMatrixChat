@@ -44,10 +44,11 @@ public class GestaoTokenRestIntmatrixchatTest {
      * Test of gerarNovoToken method, of class GestaoTokenRestIntmatrixchat.
      */
     public void testGerarNovoToken() {
-
+        gestaoTokenSistema.excluirToken();
         gestaoTokenSistema.gerarNovoToken();
 
         assertTrue(gestaoTokenSistema.isTemTokemAtivo());
+        assertTrue(gestaoTokenSistema.validarToken());
 
     }
 
