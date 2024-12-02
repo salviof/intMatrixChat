@@ -29,13 +29,21 @@ public class IntegracaoRestIntmatrixchatSalaEncontrarPorAliasTest {
         }
         ItfRespostaWebServiceSimples resposta = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_NOME.getAcao("apenasTeste").getResposta();
         System.out.println(resposta.getRespostaTexto());
-        String roomID = resposta.getRespostaComoObjetoJson().get("rooms").asJsonArray().get(0).asJsonObject().getString("room_id");
-        ItfRespostaWebServiceSimples respostaAlias2 = FabApiRestIntMatrixChatSalas.SALA_VINCULAR_APELIDO_SALA_AO_ID.getAcao("#APELIDO_APENAS_TESTE2:casanovadigital.com.br", roomID).getResposta();
-        System.out.println(respostaAlias2.getRespostaTexto());
-        ItfRespostaWebServiceSimples respostaBuscaPeloAlias = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_ALIAS.getAcao("#APELIDO_APENAS_TEST:casanovadigital.com.br").getResposta();
-        System.out.println(respostaBuscaPeloAlias.getRespostaTexto());
+        if (resposta.isSucesso()) {
+            String roomID = resposta.getRespostaComoObjetoJson().get("rooms").asJsonArray().get(0).asJsonObject().getString("room_id");
+            ItfRespostaWebServiceSimples respostaAlias2 = FabApiRestIntMatrixChatSalas.SALA_VINCULAR_APELIDO_SALA_AO_ID.getAcao("#APELIDO_APENAS_TESTE2:casanovadigital.com.br", roomID).getResposta();
+            System.out.println(respostaAlias2.getRespostaTexto());
+        }
         ItfRespostaWebServiceSimples respostaBuscaPeloAliasCamila = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_ALIAS.getAcao("#553195171605wv:casanovadigital.com.br").getResposta();
         System.out.println(respostaBuscaPeloAliasCamila.getRespostaTexto());
+
+        ItfRespostaWebServiceSimples respostaBuscaPeloAlias = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_ALIAS.getAcao("#APELIDO_APENAS_TEST:casanovadigital.com.br").getResposta();
+        System.out.println(respostaBuscaPeloAlias.getRespostaTexto());
+<<<<<<< HEAD
+        ItfRespostaWebServiceSimples respostaBuscaPeloAliasCamila = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_ALIAS.getAcao("#553195171605wv:casanovadigital.com.br").getResposta();
+        System.out.println(respostaBuscaPeloAliasCamila.getRespostaTexto());
+=======
+>>>>>>> 8194b3e (Atualizacao automática)
 
     }
 

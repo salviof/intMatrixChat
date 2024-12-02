@@ -39,8 +39,27 @@ public class GestaoTokenRestIntmatrixchat extends GestaoTokenDinamico {
 
     @Override
     public boolean validarToken() {
+<<<<<<< HEAD
         if (isTemTokemAtivo()) {
             ItfRespostaWebServiceSimples statusUsuario = FabApiRestIntMatrixChatUsuarios.USUARIO_PROFILE.getAcao(userID).getResposta();
+=======
+
+        if (isTemTokemAtivo()) {
+            ItfRespostaWebServiceSimples statusUsuario = null;
+            switch (tipoAgente) {
+
+                case USUARIO:
+                    ItfUsuario usuario = getUsuario();
+                    statusUsuario = FabApiRestIntMatrixChatUsuarios.USUARIOS_STATUS.getAcao(usuario, userID).getResposta();
+                    break;
+                case SISTEMA:
+                    statusUsuario = FabApiRestIntMatrixChatUsuarios.USUARIOS_STATUS.getAcao(userID).getResposta();
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+
+>>>>>>> 8194b3e (Atualizacao automática)
             if (!SBCore.isEmModoProducao()) {
                 if (!statusUsuario.isSucesso()) {
                     System.out.println(statusUsuario.getRespostaTexto());
@@ -55,6 +74,7 @@ public class GestaoTokenRestIntmatrixchat extends GestaoTokenDinamico {
             final FabTipoAgenteClienteApi pTipoAgente, final ItfUsuario pUsuario) {
         super(FabApiRestIntMatrixChatUsuarios.class, pTipoAgente, pUsuario);
         configuracao = getConfig();
+
     }
 
     @Override
@@ -118,6 +138,10 @@ public class GestaoTokenRestIntmatrixchat extends GestaoTokenDinamico {
                 System.out.println("Erro autenticando com  " + usuarioLogin);
                 System.out.println(corpo);
                 System.out.println(resposta.getRespostaTexto());
+<<<<<<< HEAD
+=======
+                return null;
+>>>>>>> 8194b3e (Atualizacao automática)
                 //     SBCore.enviarAvisoAoUsuario("Usuário ou senha inválida, verifique suas credenciais em " + getConfig().getPropriedade(FabConfigApiMatrixChat.URL_MATRIX_SERVER));
             }
         }

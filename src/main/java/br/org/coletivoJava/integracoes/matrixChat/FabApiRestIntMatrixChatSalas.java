@@ -67,6 +67,13 @@ public enum FabApiRestIntMatrixChatSalas implements ItfFabricaIntegracaoRest {
             urlDocumentacao = "https://ma1uta.github.io/spec/client_server/unstable.html#post-matrix-client-r0-createroom",
             adicionarAutenticacaoBearer = true)
     SALA_CRIAR,
+    @InfoConsumoRestService(getPachServico = "/_synapse/admin/v2/rooms/{0}",
+            tipoConexao = FabTipoConexaoRest.DELETE,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = "{codigoSala}",
+            parametrosPost = {"codigoSala"},
+            urlDocumentacao = "https://ma1uta.github.io/spec/client_server/unstable.html#post-matrix-client-r0-createroom",
+            adicionarAutenticacaoBearer = true)
     SALA_EXLUIR,
     @InfoConsumoRestService(getPachServico = "/_synapse/admin/v2/users/{0}",
             tipoConexao = FabTipoConexaoRest.PUT,
@@ -79,14 +86,15 @@ public enum FabApiRestIntMatrixChatSalas implements ItfFabricaIntegracaoRest {
     @InfoConsumoRestService(getPachServico = "/_synapse/admin/v1/join/{0}",
             tipoConexao = FabTipoConexaoRest.POST,
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
-            parametrosGet = {"useride"},
+            parametrosGet = {"gruoupID"},
             urlDocumentacao = "https://matrix-org.github.io/synapse/latest/admin_api/room_membership.html",
             adicionarAutenticacaoBearer = true)
     SALA_ADICIONAR_USUARIO,
-    @InfoConsumoRestService(getPachServico = "/_synapse/admin/v2/users/{0}",
-            tipoConexao = FabTipoConexaoRest.GET,
+    @InfoConsumoRestService(getPachServico = "/_matrix/client/v3/rooms/{0}/kick",
+            tipoConexao = FabTipoConexaoRest.POST,
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
-            parametrosGet = {"IDuSUARIO"},
+            parametrosGet = {"groupId"},
+            parametrosPost = {"userId"},
             urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
             adicionarAutenticacaoBearer = true)
     SALA_REMOVER_USUARIO,
@@ -148,8 +156,7 @@ public enum FabApiRestIntMatrixChatSalas implements ItfFabricaIntegracaoRest {
             parametrosPost = {"mensagem"},
             urlDocumentacao
             = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
-            adicionarAutenticacaoBearer = true
-    )
+            adicionarAutenticacaoBearer = true)
     SALA_ADMIN_DEFINIR,
     @InfoConsumoRestService(getPachServico = "/_matrix/client/v3/rooms/{0}/state/m.room.name/",
             tipoConexao = FabTipoConexaoRest.PUT,
@@ -170,6 +177,17 @@ public enum FabApiRestIntMatrixChatSalas implements ItfFabricaIntegracaoRest {
             = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
             adicionarAutenticacaoBearer = true
     )
-    SALA_DEFINIR_ESPACO_PAI;
+    SALA_DEFINIR_ESPACO_PAI,
+    @InfoConsumoRestService(getPachServico = "/_matrix/client/v3/rooms/{0}/read_markers",
+            tipoConexao = FabTipoConexaoRest.POST,
+            aceitarCertificadoDeHostNaoConfiavel = true,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = {"roomId"},
+            parametrosPost = {"idEvento"},
+            urlDocumentacao
+            = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
+            adicionarAutenticacaoBearer = true
+    )
+    SALA_MARCAR_COMO_LIDO;
 
 }

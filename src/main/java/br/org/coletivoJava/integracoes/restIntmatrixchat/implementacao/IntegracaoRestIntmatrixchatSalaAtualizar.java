@@ -8,13 +8,19 @@ import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basic
 
 @InfoIntegracaoRestIntmatrixchatSalas(tipo = FabApiRestIntMatrixChatSalas.SALA_ATUALIZAR)
 public class IntegracaoRestIntmatrixchatSalaAtualizar
-		extends
-			AcaoApiIntegracaoAbstrato {
+        extends
+        AcaoApiIntegracaoAbstrato {
 
-	public IntegracaoRestIntmatrixchatSalaAtualizar(
-			final FabTipoAgenteClienteApi pTipoAgente,
-			final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
-		super(FabApiRestIntMatrixChatSalas.SALA_ATUALIZAR, pTipoAgente,
-				pUsuario, pParametro);
-	}
+    public IntegracaoRestIntmatrixchatSalaAtualizar(
+            final FabTipoAgenteClienteApi pTipoAgente,
+            final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
+        super(FabApiRestIntMatrixChatSalas.SALA_ATUALIZAR, pTipoAgente,
+                pUsuario, pParametro);
+    }
+
+    @Override
+    public String gerarCorpoRequisicao() {
+        throw new UnsupportedOperationException("não existe documentação oficial sobre como renomear a sala, uma abordagem possível é usar a exclusão com redirecionamento de usuários e mensagens (previsto na api de  exclusão da sala)");
+    }
+
 }

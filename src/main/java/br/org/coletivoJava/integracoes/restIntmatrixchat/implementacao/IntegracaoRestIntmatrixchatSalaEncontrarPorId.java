@@ -26,7 +26,7 @@ public class IntegracaoRestIntmatrixchatSalaEncontrarPorId
 
     @Override
     protected RespostaWebServiceSimples gerarRespostaTratamentoFino(RespostaWebServiceSimples pRespostaWSSemTratamento) {
-        return super.gerarRespostaTratamentoFino(pRespostaWSSemTratamento); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        return UtilMatrixApiServer.gerarRespostaWSTratamentoFino(pRespostaWSSemTratamento); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 
 }

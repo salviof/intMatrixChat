@@ -10,6 +10,7 @@ import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.Ac
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
 import jakarta.json.Json;
+import jakarta.json.JsonArray;
 import jakarta.json.JsonArrayBuilder;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonObjectBuilder;
@@ -30,28 +31,59 @@ public class IntegracaoRestIntmatrixchatUsuarioAtualizar
     public String gerarCorpoRequisicao() {
         JsonObjectBuilder jsonBUilder;
         try {
-            String codUsuario = (String) parametros.get(0);
-            String usuario = (String) getParametros()[0].toString().substring(0, getParametros()[0].toString().indexOf(":"));
-            String nome = (String) getParametros()[1].toString().substring(0, getParametros()[0].toString().indexOf(":"));
-            String email = (String) getParametros()[2];
-            String senha = (String) getParametros()[3];
+            if (getParametros().length != 4) {
+                throw new UnsupportedOperationException("Parámetros para atualizacao de usário inválidos");
+            }
+            ///String usuario = (String) getParametros()[1];
+            String nome = (String) getParametros()[1];
+            String email = null;
+            if (getParametros()[2] != null) {
+                email = (String) getParametros()[2];
+            }
+            String telefone = null;
+            if (getParametros()[3] != null) {
+                telefone = (String) getParametros()[3];
+            }
+            // String senha = (String) getParametros()[4];
+
+            System.out.println("Atualizando usuário:");
+            System.out.println("codigo: " + getParametros()[0]);
+            System.out.println("nome: " + nome);
+            System.out.println("email:" + email);
+            System.out.println("telefone" + telefone);
+
+            String avatar = null;
+            if (email != null) {
+                avatar = UtilSBCoreGravatar.getGravatarUrl(email, 80);
+            }
 
             jsonBUilder = UtilSBCoreJson.
                     getJsonBuilderBySequenciaChaveValor(
-                            //      "name", usuarioFormatado,
+                            //"username", usuario,
                             "displayname", nome,
-                            "password", senha,
-                            "avatar_url", UtilSBCoreGravatar.getGravatarUrl(email, 80),
                             "admin", false,
                             "deactivated", false
                     //,"access_token", getTokenGestao().getToken()
                     );
+            if (avatar != null) {
+                jsonBUilder.add("avatar_url", UtilSBCoreGravatar.getGravatarUrl(email, 80));
+            }
+            if (email != null || telefone != null) {
+                JsonArrayBuilder threepidsBuilder = Json.createArrayBuilder();
+                if (email != null) {
+                    JsonObject threepidEmail = UtilSBCoreJson.getJsonObjectBySequenciaChaveValor("medium", "email", "address", email);
+                    threepidsBuilder.add(threepidEmail);
+                }
 
-            JsonObject threepid = UtilSBCoreJson.getJsonObjectBySequenciaChaveValor("medium", "email", "address", email);
-            JsonArrayBuilder threepidsBuilder = Json.createArrayBuilder();
-            threepidsBuilder.add(threepid);
-
-            jsonBUilder.add("threepids", threepidsBuilder.build());
+                if (telefone != null) {
+                    JsonObject threepidPhone = UtilSBCoreJson.getJsonObjectBySequenciaChaveValor("medium", "msisdn", "address", telefone);
+                    threepidsBuilder.add(threepidPhone);
+                }
+                JsonArray idExternos = threepidsBuilder.build();
+                if (!idExternos.isEmpty()) {
+                    jsonBUilder.add("threepids", idExternos);
+                }
+            }
         } catch (ErroProcessandoJson ex) {
             throw new UnsupportedOperationException("Parametros Iválidos");
         }

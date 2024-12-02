@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
- */
 package br.org.coletivoJava.integracoes.matrixChat;
 
 import br.org.coletivoJava.integracoes.matrixChat.config.FabConfigApiMatrixChat;
@@ -27,7 +23,7 @@ public enum FabApiRestIntMatrixChatUsuarios implements ItfFabricaIntegracaoRest 
             tipoConexao = FabTipoConexaoRest.PUT,
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
             parametrosGet = {"useride"},
-            parametrosPost = {"username", "email", "password"},
+            parametrosPost = {"email", "password"},
             urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
             adicionarAutenticacaoBearer = true)
     USUARIO_CRIAR,
@@ -50,7 +46,7 @@ public enum FabApiRestIntMatrixChatUsuarios implements ItfFabricaIntegracaoRest 
             tipoConexao = FabTipoConexaoRest.PUT,
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
             parametrosGet = {"useride"},
-            parametrosPost = {"username", "email", "password"},
+            parametrosPost = {"nome", "email", "telefone"},
             urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
             adicionarAutenticacaoBearer = true)
     USUARIO_ATUALIZAR,
@@ -90,6 +86,7 @@ public enum FabApiRestIntMatrixChatUsuarios implements ItfFabricaIntegracaoRest 
             urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
             adicionarAutenticacaoBearer = true)
     USUARIO_OBTER_DADOS_BY_EMAIL,
+    ///_synapse/admin/v1/rooms/<room_id>/members
     @InfoConsumoRestService(getPachServico = "/_synapse/admin/v1/rooms/{0}/members",
             tipoConexao = FabTipoConexaoRest.GET,
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
@@ -108,8 +105,11 @@ public enum FabApiRestIntMatrixChatUsuarios implements ItfFabricaIntegracaoRest 
             tipoConexao = FabTipoConexaoRest.GET,
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
             parametrosGet = {"IDuSUARIO"},
-            urlDocumentacao = "https://www.matrix.org/docs/api/#get-/_matrix/client/v3/presence/-userId-/status",
-            adicionarAutenticacaoBearer = true)
+            aceitarCertificadoDeHostNaoConfiavel = true,
+            urlDocumentacao
+            = "https://www.matrix.org/docs/api/#get-/_matrix/client/v3/presence/-userId-/status",
+            adicionarAutenticacaoBearer = true
+    )
     USUARIOS_STATUS,
     @InfoConsumoRestService(getPachServico = "/_synapse/admin/v2/users/{0}",
             tipoConexao = FabTipoConexaoRest.GET,
@@ -125,5 +125,15 @@ public enum FabApiRestIntMatrixChatUsuarios implements ItfFabricaIntegracaoRest 
             urlDocumentacao = "https://www.matrix.org/docs/api/#get-/_matrix/client/v3/presence/-userId-/status",
             adicionarAutenticacaoBearer = true)
     USUARIO_PROFILE,
+<<<<<<< HEAD
 
+=======
+    ///_matrix/client/v1/register/m.login.registration_token/validity
+    @InfoConsumoRestService(getPachServico = "/_matrix/client/v1/register/m.login.registration_token/validity",
+            tipoConexao = FabTipoConexaoRest.GET,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            urlDocumentacao = "https://www.matrix.org/docs/api/#get-/_matrix/client/v3/presence/-userId-/status",
+            adicionarAutenticacaoBearer = true)
+    USUARIO_VALIDACAO_TOKEN
+>>>>>>> 8194b3e (Atualizacao automática)
 }

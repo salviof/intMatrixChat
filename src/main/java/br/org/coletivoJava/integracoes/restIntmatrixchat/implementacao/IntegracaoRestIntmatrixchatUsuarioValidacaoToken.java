@@ -2,25 +2,26 @@ package br.org.coletivoJava.integracoes.restIntmatrixchat.implementacao;
 
 import br.org.coletivoJava.integracoes.restIntmatrixchat.api.InfoIntegracaoRestIntmatrixchatUsuarios;
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatUsuarios;
-import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.RespostaWebServiceSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
 
-@InfoIntegracaoRestIntmatrixchatUsuarios(tipo = FabApiRestIntMatrixChatUsuarios.USUARIOS_STATUS)
-public class IntegracaoRestIntmatrixchatUsuariosStatus
+@InfoIntegracaoRestIntmatrixchatUsuarios(tipo = FabApiRestIntMatrixChatUsuarios.USUARIO_VALIDACAO_TOKEN)
+public class IntegracaoRestIntmatrixchatUsuarioValidacaoToken
         extends
         AcaoApiIntegracaoAbstrato {
 
-    public IntegracaoRestIntmatrixchatUsuariosStatus(
+    public IntegracaoRestIntmatrixchatUsuarioValidacaoToken(
             final FabTipoAgenteClienteApi pTipoAgente,
             final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
-        super(FabApiRestIntMatrixChatUsuarios.USUARIOS_STATUS, pTipoAgente,
-                pUsuario, pParametro);
+        super(FabApiRestIntMatrixChatUsuarios.USUARIO_VALIDACAO_TOKEN,
+                pTipoAgente, pUsuario, pParametro);
     }
 
     @Override
-    protected RespostaWebServiceSimples gerarRespostaTratamentoFino(RespostaWebServiceSimples pRespostaWSSemTratamento) {
-        return UtilMatrixApiServer.gerarRespostaWSTratamentoFino(pRespostaWSSemTratamento);
+    public String gerarUrlRequisicao() {
+        String url = super.gerarUrlRequisicao(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        return url;
     }
+
 }

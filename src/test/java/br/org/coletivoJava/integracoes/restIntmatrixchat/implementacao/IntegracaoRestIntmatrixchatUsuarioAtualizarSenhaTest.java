@@ -8,6 +8,7 @@ import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatUsuario
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoreMatrixChatIntegracao;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.ItfTokenGestao;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -28,7 +29,6 @@ public class IntegracaoRestIntmatrixchatUsuarioAtualizarSenhaTest {
      * Test of gerarCorpoRequisicao method, of class
      * IntegracaoRestIntmatrixchatUsuarioAtualizarSenha.
      */
-    @Test
     public void testGerarCorpoRequisicao() {
         SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
         if (!FabApiRestIntMatrixChatUsuarios.USUARIO_ATUALIZAR_SENHA.getGestaoToken().isTemTokemAtivo()) {
@@ -45,6 +45,21 @@ public class IntegracaoRestIntmatrixchatUsuarioAtualizarSenhaTest {
         } else {
             System.out.println(resposta.getRespostaTexto());
         }
+    }
+
+    @Test
+    public void testAlterarSenhaLaudy() {
+        SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
+        ItfTokenGestao gesto = FabApiRestIntMatrixChatUsuarios.USUARIO_ATUALIZAR_SENHA.getGestaoToken();
+        //gesto.excluirToken();
+        //gesto.gerarNovoToken();
+//@auxiliadora:casanovadigital.com.br
+
+        ItfRespostaWebServiceSimples resp2 = FabApiRestIntMatrixChatUsuarios.USUARIOS_LISTAGEM.getAcao().getResposta();
+        System.out.println(resp2.getRespostaTexto());
+        //ItfRespostaWebServiceSimples resp = FabApiRestIntMatrixChatUsuarios.USUARIO_ATUALIZAR_SENHA.getAcao("@assistentel",
+        //).getResposta();
+        //System.out.println(resp.getRespostaTexto());
     }
 
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
- */
 package br.org.coletivoJava.integracoes.restIntmatrixchat.implementacao;
 
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatUsuarios;
@@ -9,6 +5,7 @@ import br.org.coletivoJava.integracoes.restIntmatrixchat.UtilsbApiMatrixChat;
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoreMatrixChatIntegracao;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.ItfTokenGestao;
 import junit.framework.Assert;
 import org.junit.Test;
 
@@ -24,6 +21,7 @@ public class IntegracaoRestIntmatrixchatUsuarioCriarTest {
     @Test
     public void testSomeMethod() {
         SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
+<<<<<<< HEAD
         if (!FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR.getGestaoToken().isTemTokemAtivo()) {
             FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR.getGestaoToken().gerarNovoToken();
         }
@@ -37,33 +35,21 @@ public class IntegracaoRestIntmatrixchatUsuarioCriarTest {
 
         String slugUsuario = "camila_bissiguini";
         String codigoUsuario = UtilsbApiMatrixChat.gerarCodigoBySlugUser(slugUsuario);
+=======
+        ItfTokenGestao tokenGEstao = FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR.getGestaoToken();
+        tokenGEstao.excluirToken();
+        if (!tokenGEstao.isTemTokemAtivo()) {
+            tokenGEstao.gerarNovoToken();
+        }
+        // System.out.println(FabApiRestIntMatrixChatUsuarios.USUARIO_REMOVER.getAcao("@salvio2:casanovadigital.com.br").getResposta().getRespostaTexto());
+>>>>>>> 8194b3e (Atualizacao automática)
 
-        //      codigo: @beatriz202:casanovadigital.com.br
-//contatoswsCasanova | nome: Beatriz
-//contatoswsCasanova | email:beatrizesalvio@gmail.com
-//contatoswsCasanova | telefone+553198789856
-//contatoswsCasanova | Senha:2034736859
-        ItfRespostaWebServiceSimples resp = FabApiRestIntMatrixChatUsuarios.USUARIO_OBTER_DADOS_BY_EMAIL
-                //.getAcao("wagner@casanovadigital.com.br").getResposta();
-                .getAcao("camila@casanovadigital.com.br").getResposta();
-        System.out.println(resp.getRespostaTexto());
-        ItfRespostaWebServiceSimples resposta = FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR
+        ItfRespostaWebServiceSimples respostaTeste1 = FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR
                 //        .getAcao(codigoUsuario, slugUsuario, "Wagner Mingote", "wagner@casanovadigital.com.br", "553121159755", "Comunic@=PIX").getResposta();
-                .getAcao(codigoUsuario, slugUsuario, "Camila M. Bissiguini", "camila@casanovadigital.com.br", "553195171605", "Dra.Comunicação01=PIXES").getResposta();
-        //ItfRespostaWebServiceSimples respostaPesquisa = FabApiRestIntMatrixChatUsuarios.USUARIO_OBTER_DADOS_BY_EMAIL
-        //        .getAcao("beatrizesalvio@gmail.com").getResposta();
-        //System.out.println(respostaPesquisa.getRespostaTexto());
-        System.out.println(resp.getRespostaTexto());
-        //ItfRespostaWebServiceSimples resposta = FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR
-        //        .getAcao("@beatriz203:casanovadigital.com.br", "teste", "Beatriz", "beatrizesalvio@gmail.com", "+553198789856", "2034736859").getResposta();
-        ItfRespostaWebServiceSimples respostaAlteraSenha = FabApiRestIntMatrixChatUsuarios.USUARIO_ATUALIZAR_SENHA
-                .getAcao(codigoUsuario, "renata@Casalover").getResposta();
-        System.out.println(respostaAlteraSenha.getRespostaTexto());
-        resposta.dispararMensagens();
-        System.out.println(resposta.getRespostaTexto());
-        Assert.assertTrue("Falha criando usuário" + resposta.getRespostaTexto(), resposta.isSucesso());
-        System.out.println(resposta.getCodigoResposta());
-        System.out.println(resposta.getRespostaTexto());
+                .getAcao("@tiago_oliveira:casanovadigital.com.br", "Tiago Oliveira", "tiago@casanovadigital.com.br", "5531975741135", "ComunicacaoDigital@TMJ2025").getResposta();
+
+        System.out.println(respostaTeste1.getRespostaTexto());
+
     }
 
 }

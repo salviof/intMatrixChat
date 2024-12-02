@@ -22,7 +22,7 @@ import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.importacao.FabTip
         configuracao = FabConfigApiMatrixChat.class
 )
 public enum FabApiRestMatrixMedia implements ItfFabricaIntegracaoRest {
-
+//
     @InfoConsumoRestService(getPachServico = "/_matrix/media/r0/upload?filename={0}",
             tipoConexao = FabTipoConexaoRest.POST,
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
@@ -31,6 +31,14 @@ public enum FabApiRestMatrixMedia implements ItfFabricaIntegracaoRest {
             corpoRequisicaoEmBytes = true,
             urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
             adicionarAutenticacaoBearer = true)
-    UPLOAD_ARQUIVO;
+    UPLOAD_ARQUIVO,
+    @InfoConsumoRestService(getPachServico = "/_matrix/media/r0/download/{0}/{1}",
+            tipoConexao = FabTipoConexaoRest.GET,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = {"serverName", "mediaId"},
+            corpoRequisicaoEmBytes = true,
+            urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
+            adicionarAutenticacaoBearer = true)
+    DOWNLOAD_ARQUIVO,
 
 }

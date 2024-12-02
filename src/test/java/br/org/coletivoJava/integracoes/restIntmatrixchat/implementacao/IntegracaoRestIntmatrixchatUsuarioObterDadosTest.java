@@ -21,7 +21,13 @@ public class IntegracaoRestIntmatrixchatUsuarioObterDadosTest {
     public void testSomeMethod() {
         SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
         GestaoTokenRestIntmatrixchat gtoke = (GestaoTokenRestIntmatrixchat) FabApiRestIntMatrixChatUsuarios.USUARIO_OBTER_DADOS.getGestaoToken();
+<<<<<<< HEAD
         System.out.println(gtoke.getToken());
+=======
+        gtoke.excluirToken();
+        gtoke.gerarNovoToken();
+        System.out.println(gtoke.getUserID());
+>>>>>>> 8194b3e (Atualizacao automática)
         ItfRespostaWebServiceSimples resposta = FabApiRestIntMatrixChatUsuarios.USUARIO_OBTER_DADOS.getAcao(gtoke.getUserID()).getResposta();
 
         resposta.dispararMensagens();

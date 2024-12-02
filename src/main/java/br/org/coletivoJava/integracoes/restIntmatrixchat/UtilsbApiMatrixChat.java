@@ -4,15 +4,37 @@
  */
 package br.org.coletivoJava.integracoes.restIntmatrixchat;
 
+import br.org.coletivoJava.integracoes.matrixChat.FabApiRestMatrixMedia;
 import br.org.coletivoJava.integracoes.matrixChat.config.FabConfigApiMatrixChat;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.arquivosConfiguracao.ConfigModulo;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UTilSBCoreInputs;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreBytes;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringSlugs;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringValidador;
+<<<<<<< HEAD
 import com.super_bits.modulosSB.SBCore.modulos.objetos.validador.ErroValidacao;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+=======
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBApiRestClient;
+import static com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBApiRestClient.getHTTPConexaoPadrao;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.validador.ErroValidacao;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+>>>>>>> 8194b3e (Atualizacao automática)
 
 /**
  *
@@ -62,11 +84,35 @@ public class UtilsbApiMatrixChat {
 
     }
 
+<<<<<<< HEAD
     public static String gerarCodigoBySlugUser(String pUsername) {
 
         return "@" + pUsername.toLowerCase() + ":"
                 + config.getPropriedade(FabConfigApiMatrixChat.DOMINIO_FEDERADO);
         //":casanovadigital.com.br";
+=======
+    public static boolean isCodigoUsuarioModoCanonico(String pTesteCase) {
+        if (pTesteCase == null || pTesteCase.isEmpty()) {
+            return false;
+        }
+        if (!pTesteCase.startsWith("@")) {
+            return false;
+        }
+
+        if (pTesteCase.contains(":") && pTesteCase.contains(".")) {
+            return true;
+        }
+        return false;
+    }
+
+    public static String gerarCodigoBySlugUser(String pUsername) {
+        if (isCodigoUsuarioModoCanonico(pUsername)) {
+            return pUsername;
+        }
+        return "@" + pUsername.toLowerCase() + ":"
+                + config.getPropriedade(FabConfigApiMatrixChat.DOMINIO_FEDERADO);
+
+>>>>>>> 8194b3e (Atualizacao automática)
     }
 
 }

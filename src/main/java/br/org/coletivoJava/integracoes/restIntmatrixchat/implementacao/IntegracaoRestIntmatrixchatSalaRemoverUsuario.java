@@ -8,13 +8,23 @@ import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basic
 
 @InfoIntegracaoRestIntmatrixchatSalas(tipo = FabApiRestIntMatrixChatSalas.SALA_REMOVER_USUARIO)
 public class IntegracaoRestIntmatrixchatSalaRemoverUsuario
-		extends
-			AcaoApiIntegracaoAbstrato {
+        extends
+        AcaoApiIntegracaoAbstrato {
 
-	public IntegracaoRestIntmatrixchatSalaRemoverUsuario(
-			final FabTipoAgenteClienteApi pTipoAgente,
-			final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
-		super(FabApiRestIntMatrixChatSalas.SALA_REMOVER_USUARIO, pTipoAgente,
-				pUsuario, pParametro);
-	}
+    public IntegracaoRestIntmatrixchatSalaRemoverUsuario(
+            final FabTipoAgenteClienteApi pTipoAgente,
+            final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
+        super(FabApiRestIntMatrixChatSalas.SALA_REMOVER_USUARIO, pTipoAgente,
+                pUsuario, pParametro);
+    }
+
+    @Override
+    public String gerarCorpoRequisicao() {
+        String usuario = (String) getParametros()[1];
+        return "{\n"
+                + "  \"reason\": \"removido por admin\",\n"
+                + "  \"user_id\": \"" + usuario + "\"\n"
+                + "}";
+    }
+
 }
