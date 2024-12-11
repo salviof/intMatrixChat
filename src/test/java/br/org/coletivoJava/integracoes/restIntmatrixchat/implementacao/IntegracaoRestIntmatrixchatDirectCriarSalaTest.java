@@ -4,21 +4,12 @@
  */
 package br.org.coletivoJava.integracoes.restIntmatrixchat.implementacao;
 
-import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatSalas;
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatUsuarios;
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestInteMatrixChatDirect;
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoreMatrixChatIntegracao;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
-import jakarta.json.JsonArray;
-import jakarta.json.JsonString;
-import jakarta.json.JsonValue;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *

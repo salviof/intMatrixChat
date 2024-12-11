@@ -45,15 +45,15 @@ public class UtilMatrixApiServer {
      * @param pURL Ex: mxc://casanovadigital.com.br/JlefQcrTuHwElyjmqZnZLgsP
      * @return
      */
-    public static byte[] getMediaIDByURIMatrix(String pURL) {
-        String matrixUri = "mxc://casanovadigital.com.br/JlefQcrTuHwElyjmqZnZLgsP";
-        String matrixMediaSemProtocolo = matrixUri.substring(6, matrixUri.length());
+    public static byte[] getMediaByteaIDByURIMatrix(String pURL) {
+
+        String matrixMediaSemProtocolo = pURL.substring(6, pURL.length());
         String docminio = matrixMediaSemProtocolo.split("/")[0];
         String idMedia = matrixMediaSemProtocolo.split("/")[1];
-        return getMediaByID(idMedia);
+        return getMediaBytesByID(idMedia);
     }
 
-    public static byte[] getMediaByID(String pId) {
+    public static byte[] getMediaBytesByID(String pId) {
         String dominioPR = SBCore.getConfigModulo(FabConfigApiMatrixChat.class).getPropriedade(FabConfigApiMatrixChat.DOMINIO_FEDERADO);
         String urlServidor = SBCore.getConfigModulo(FabConfigApiMatrixChat.class).getPropriedade(FabConfigApiMatrixChat.URL_MATRIX_SERVER);
         String token = FabApiRestMatrixMedia.DOWNLOAD_ARQUIVO.getGestaoToken().getToken();

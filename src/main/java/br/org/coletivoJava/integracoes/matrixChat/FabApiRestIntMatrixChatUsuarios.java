@@ -125,9 +125,6 @@ public enum FabApiRestIntMatrixChatUsuarios implements ItfFabricaIntegracaoRest 
             urlDocumentacao = "https://www.matrix.org/docs/api/#get-/_matrix/client/v3/presence/-userId-/status",
             adicionarAutenticacaoBearer = true)
     USUARIO_PROFILE,
-<<<<<<< HEAD
-
-=======
     ///_matrix/client/v1/register/m.login.registration_token/validity
     @InfoConsumoRestService(getPachServico = "/_matrix/client/v1/register/m.login.registration_token/validity",
             tipoConexao = FabTipoConexaoRest.GET,
@@ -135,5 +132,5 @@ public enum FabApiRestIntMatrixChatUsuarios implements ItfFabricaIntegracaoRest 
             urlDocumentacao = "https://www.matrix.org/docs/api/#get-/_matrix/client/v3/presence/-userId-/status",
             adicionarAutenticacaoBearer = true)
     USUARIO_VALIDACAO_TOKEN
->>>>>>> 8194b3e (Atualizacao automática)
+
 }

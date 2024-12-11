@@ -21,13 +21,15 @@ public class IntegracaoRestIntmatrixchatDownloadArquivoTest {
 
     @Test
     public void testSomeMethod() {
+        //https://matrix.laudycardio.com.br/_matrix/media/r0/download/laudycardio.com.br/JlefQcrTuHwElyjmqZnZLgsP
+
         SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
         String matrixUri = "mxc://casanovadigital.com.br/JlefQcrTuHwElyjmqZnZLgsP";
         String matrixMediaSemProtocolo = matrixUri.substring(6, matrixUri.length());
         String dominioPR = SBCore.getConfigModulo(FabConfigApiMatrixChat.class).getPropriedade(FabConfigApiMatrixChat.DOMINIO_FEDERADO);
         String docminio = matrixMediaSemProtocolo.split("/")[0];
         String idMedia = matrixMediaSemProtocolo.split("/")[1];
-        byte[] arquivo = UtilMatrixApiServer.getMediaByID(idMedia);
+        byte[] arquivo = UtilMatrixApiServer.getMediaBytesByID(idMedia);
 
         UtilSBCoreOutputs.salvarArquivoByte(arquivo, "/home/salvio/Downloads/teste.png");
     }

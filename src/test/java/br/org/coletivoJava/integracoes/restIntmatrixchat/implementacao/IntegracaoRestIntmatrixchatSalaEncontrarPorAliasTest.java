@@ -39,11 +39,9 @@ public class IntegracaoRestIntmatrixchatSalaEncontrarPorAliasTest {
 
         ItfRespostaWebServiceSimples respostaBuscaPeloAlias = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_ALIAS.getAcao("#APELIDO_APENAS_TEST:casanovadigital.com.br").getResposta();
         System.out.println(respostaBuscaPeloAlias.getRespostaTexto());
-<<<<<<< HEAD
-        ItfRespostaWebServiceSimples respostaBuscaPeloAliasCamila = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_ALIAS.getAcao("#553195171605wv:casanovadigital.com.br").getResposta();
+
+        ItfRespostaWebServiceSimples respostaBuscaPeloAliasCamila2 = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_ALIAS.getAcao("#553195171605wv:casanovadigital.com.br").getResposta();
         System.out.println(respostaBuscaPeloAliasCamila.getRespostaTexto());
-=======
->>>>>>> 8194b3e (Atualizacao automática)
 
     }
 

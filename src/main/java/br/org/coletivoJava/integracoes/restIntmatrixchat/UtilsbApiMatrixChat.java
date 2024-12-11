@@ -12,12 +12,12 @@ import com.super_bits.modulosSB.SBCore.UtilGeral.UTilSBCoreInputs;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreBytes;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringSlugs;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringValidador;
-<<<<<<< HEAD
+
 import com.super_bits.modulosSB.SBCore.modulos.objetos.validador.ErroValidacao;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-=======
+
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBApiRestClient;
 import static com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBApiRestClient.getHTTPConexaoPadrao;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.validador.ErroValidacao;
@@ -34,7 +34,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
->>>>>>> 8194b3e (Atualizacao automática)
 
 /**
  *
@@ -84,13 +83,6 @@ public class UtilsbApiMatrixChat {
 
     }
 
-<<<<<<< HEAD
-    public static String gerarCodigoBySlugUser(String pUsername) {
-
-        return "@" + pUsername.toLowerCase() + ":"
-                + config.getPropriedade(FabConfigApiMatrixChat.DOMINIO_FEDERADO);
-        //":casanovadigital.com.br";
-=======
     public static boolean isCodigoUsuarioModoCanonico(String pTesteCase) {
         if (pTesteCase == null || pTesteCase.isEmpty()) {
             return false;
@@ -112,7 +104,6 @@ public class UtilsbApiMatrixChat {
         return "@" + pUsername.toLowerCase() + ":"
                 + config.getPropriedade(FabConfigApiMatrixChat.DOMINIO_FEDERADO);
 
->>>>>>> 8194b3e (Atualizacao automática)
     }
 
 }
