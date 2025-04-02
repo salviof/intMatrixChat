@@ -25,11 +25,11 @@ public class IntegracaoRestIntmatrixchatUsuarioCriarTest {
         if (!FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR.getGestaoToken().isTemTokemAtivo()) {
             FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR.getGestaoToken().gerarNovoToken();
         }
-        System.out.println(FabApiRestIntMatrixChatUsuarios.USUARIO_REMOVER.getAcao("@salvio2:casanovadigital.com.br").getResposta().getRespostaTexto());
+        //   System.out.println(FabApiRestIntMatrixChatUsuarios.USUARIO_REMOVER.getAcao("@salvio2:casanovadigital.com.br").getResposta().getRespostaTexto());
 
         ItfRespostaWebServiceSimples respostaTeste1 = FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR
                 //        .getAcao(codigoUsuario, slugUsuario, "Wagner Mingote", "wagner@casanovadigital.com.br", "553121159755", "Comunic@=PIX").getResposta();
-                .getAcao("@salvio_furbino930:casanovadigital.com.br", "Sálvio Fubino", "Salvio", "salvio@casanovadigital.com.br", "5531984178550", "semSenha@123").getResposta();
+                .getAcao("@samuel:casanovadigital.com.br", "Samuel Filipe Viana", "samuel@casanovadigital.com.br", "5531986831481", "semSenha@123").getResposta();
 
         System.out.println(respostaTeste1.getRespostaTexto());
 
