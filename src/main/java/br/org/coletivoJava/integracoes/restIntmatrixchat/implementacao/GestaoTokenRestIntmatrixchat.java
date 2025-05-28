@@ -160,6 +160,7 @@ public class GestaoTokenRestIntmatrixchat extends GestaoTokenDinamico {
         }
         deviceId = pJson.getString("device_id");
         homeServer = pJson.getString("home_server");
+        String token = pJson.getString("access_token");
         TokenDeAcessoExternoDinamico novoToken = new TokenDeAcessoExternoDinamico(pJson.getString("access_token"), dataHoraExipira);
         return novoToken;
     }

@@ -32,6 +32,7 @@ public class IntegracaoRestIntmatrixchatMinhasNotificacoesListarTest {
 
         SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
         ItfTokenGestao tokenEcontrarById = FabApiRestMatrixNotificacoes.MINHAS_NOTIFICACOES_LISTAR.getGestaoToken();
+        tokenEcontrarById.excluirToken();
         if (!tokenEcontrarById.isTemTokemAtivo()) {
             tokenEcontrarById.gerarNovoToken();
         }

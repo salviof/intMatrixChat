@@ -6,6 +6,8 @@
 package br.org.coletivoJava.integracoes.matrixChat.config;
 
 import com.super_bits.modulosSB.SBCore.ConfigGeral.arquivosConfiguracao.ItfFabConfigModulo;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreNumeros;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringGerador;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.tipoModulos.integracaoOauth.FabPropriedadeModuloIntegracaoOauth;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.tipoModulos.integracaoOauth.InfoPropriedadeConfigRestIntegracao;
 
@@ -34,6 +36,7 @@ public enum FabConfigApiMatrixChat implements ItfFabConfigModulo {
 
     public String getValorPadrao() {
         //Valores da sandbox
-        return "não definodo";
+        return UtilSBCoreStringGerador.getStringRandomicaTokenAleatorio(120);
+
     }
 }
