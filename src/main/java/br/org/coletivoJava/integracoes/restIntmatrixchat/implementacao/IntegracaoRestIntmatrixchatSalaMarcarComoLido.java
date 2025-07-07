@@ -26,6 +26,10 @@ public class IntegracaoRestIntmatrixchatSalaMarcarComoLido
 
     @Override
     public String gerarCorpoRequisicao() {
+        if (true) {
+            return "";
+        }
+        ///corpo legado para readMarkers /rooms/{roomId}/read_markers (Lê sem notificar os outros usuários)
         String codigoEvento = (String) getParametros()[1];
         //"{\"m.fully_read\":\"$czTJby_4gpdPthg0-wTbr2XnKBal-g9_PT8mKDjcjS8\",\"m.read\":\"$czTJby_4gpdPthg0-wTbr2XnKBal-g9_PT8mKDjcjS8\",\"m.read.private\":\"$czTJby_4gpdPthg0-wTbr2XnKBal-g9_PT8mKDjcjS8\"}";
         String corpo = "{\n"

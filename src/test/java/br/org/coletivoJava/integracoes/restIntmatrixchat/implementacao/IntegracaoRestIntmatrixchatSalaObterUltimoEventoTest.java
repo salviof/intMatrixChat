@@ -4,6 +4,13 @@
  */
 package br.org.coletivoJava.integracoes.restIntmatrixchat.implementacao;
 
+import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatSalas;
+import br.org.coletivoJava.integracoes.matrixChat.config.FabConfigApiMatrixChat;
+import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoreMatrixChatIntegracao;
+import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.ItfTokenGestao;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,16 +27,9 @@ public class IntegracaoRestIntmatrixchatSalaObterUltimoEventoTest {
     public IntegracaoRestIntmatrixchatSalaObterUltimoEventoTest() {
     }
 
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
     @Before
     public void setUp() {
+        SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
     }
 
     @After
@@ -38,8 +38,19 @@ public class IntegracaoRestIntmatrixchatSalaObterUltimoEventoTest {
 
     @Test
     public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        String valor = SBCore.getConfigModulo(FabConfigApiMatrixChat.class).getPropriedade(FabConfigApiMatrixChat.DOMINIO_FEDERADO);
+        ItfTokenGestao tokenEcontrarById = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_ID.getGestaoToken();
+        tokenEcontrarById.excluirToken();
+        tokenEcontrarById.gerarNovoToken();
+        assertTrue("Falha obtendo token", tokenEcontrarById.isTemTokemAtivo());
+        ItfRespostaWebServiceSimples respUltimoEvento = FabApiRestIntMatrixChatSalas.SALA_OBTER_ULTIMO_EVENTO
+                .getAcao("!QLOZIEkdxvNrMRxpfy:casanovadigital.com.br").getResposta();
+        String ultimoEvento
+                = UtilSBCoreJson.getValorApartirDoCaminho("chunk[0].event_id", respUltimoEvento.getRespostaComoObjetoJson());
+        System.out.println(ultimoEvento);
+        System.out.println(respUltimoEvento.getRespostaTexto());
+        assertTrue("Falha notficando", respUltimoEvento.isSucesso());
     }
 
 }

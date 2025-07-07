@@ -178,15 +178,16 @@ public enum FabApiRestIntMatrixChatSalas implements ItfFabricaIntegracaoRest {
             adicionarAutenticacaoBearer = true
     )
     SALA_DEFINIR_ESPACO_PAI,
-    @InfoConsumoRestService(getPachServico = "/_matrix/client/v3/rooms/{0}/read_markers",
-            tipoConexao = FabTipoConexaoRest.POST,
+    @InfoConsumoRestService(getPachServico = "/rooms/{0}/receipt/m.read/{1}",
+            tipoConexao = FabTipoConexaoRest.GET,
             aceitarCertificadoDeHostNaoConfiavel = true,
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
-            parametrosGet = {"roomId"},
-            parametrosPost = {"idEvento"},
+            parametrosGet = {"roomId", "idEvento"},
+            //   parametrosPost = {"idEvento"},Legado de /rooms/{roomId}/read_markers que lê sem notificar os usuários
             urlDocumentacao
             = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
-            adicionarAutenticacaoBearer = true
+            adicionarAutenticacaoBearer
+            = true
     )
     SALA_MARCAR_COMO_LIDO,
     @InfoConsumoRestService(getPachServico = "/_matrix/client/v3/rooms/{0}/messages?dir=b&limit=1",
