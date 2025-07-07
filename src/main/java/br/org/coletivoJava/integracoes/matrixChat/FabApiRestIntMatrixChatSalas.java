@@ -188,6 +188,13 @@ public enum FabApiRestIntMatrixChatSalas implements ItfFabricaIntegracaoRest {
             = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
             adicionarAutenticacaoBearer = true
     )
-    SALA_MARCAR_COMO_LIDO;
+    SALA_MARCAR_COMO_LIDO,
+    @InfoConsumoRestService(getPachServico = "/_matrix/client/v3/rooms/{0}/messages?dir=b&limit=1",
+            tipoConexao = FabTipoConexaoRest.GET,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = {"useride"},
+            urlDocumentacao = "https://matrix-org.github.io/synapse/latest/admin_api/rooms.html#list-room-api",
+            adicionarAutenticacaoBearer = true)
+    SALA_OBTER_ULTIMO_EVENTO;
 
 }

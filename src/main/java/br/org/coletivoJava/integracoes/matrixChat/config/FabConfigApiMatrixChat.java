@@ -35,8 +35,26 @@ public enum FabConfigApiMatrixChat implements ItfFabConfigModulo {
     @Override
 
     public String getValorPadrao() {
-        //Valores da sandbox
-        return UtilSBCoreStringGerador.getStringRandomicaTokenAleatorio(120);
+        switch (this) {
+
+            case SEGREDO:
+                return UtilSBCoreStringGerador.getStringRandomicaTokenAleatorio(120);
+
+            case URL_MATRIX_SERVER:
+                return "https://matrix.meudominio.com.br";
+
+            case USUARIO_ADMIN:
+                return "admin@meudominio.com.br";
+
+            case SENHA_USUARIO_ADMIN:
+                return UtilSBCoreStringGerador.getStringRandomicaTokenAleatorio(120);
+
+            case DOMINIO_FEDERADO:
+                return "meudominio.com.br";
+
+            default:
+                throw new AssertionError();
+        }
 
     }
 }
