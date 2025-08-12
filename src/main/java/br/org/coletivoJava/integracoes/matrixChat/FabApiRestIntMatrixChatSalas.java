@@ -178,6 +178,22 @@ public enum FabApiRestIntMatrixChatSalas implements ItfFabricaIntegracaoRest {
             adicionarAutenticacaoBearer = true
     )
     SALA_DEFINIR_ESPACO_PAI,
+    @InfoConsumoRestService(getPachServico = "/_matrix/client/v3/rooms/{0}/messages?dir=b&limit=10",
+            tipoConexao = FabTipoConexaoRest.GET,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = {"codigoSala"},
+            urlDocumentacao = "https://matrix-org.github.io/synapse/latest/admin_api/rooms.html#list-room-api",
+            adicionarAutenticacaoBearer = true)
+    SALA_OBTER_ULTIMAS_10_MENSAGENS,
+    @InfoConsumoRestService(getPachServico = "/_matrix/client/v3/rooms/{0}/receipt/m.read/{1}",
+            tipoConexao = FabTipoConexaoRest.POST,
+            aceitarCertificadoDeHostNaoConfiavel = true,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = {"roomId"},
+            parametrosPost = {"idEvento"},//,Legado de /rooms/{roomId}/read_markers que lê sem notificar os usuários
+            urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
+            adicionarAutenticacaoBearer = true)
+    SALA_MARCAR_COMO_LIDO,
     @InfoConsumoRestService(getPachServico = "/rooms/{0}/receipt/m.read/{1}",
             tipoConexao = FabTipoConexaoRest.GET,
             aceitarCertificadoDeHostNaoConfiavel = true,
@@ -189,7 +205,7 @@ public enum FabApiRestIntMatrixChatSalas implements ItfFabricaIntegracaoRest {
             adicionarAutenticacaoBearer
             = true
     )
-    SALA_MARCAR_COMO_LIDO,
+    SALA_MARCAR_COMO_LIDO_SEM_NOTIFICAR,
     @InfoConsumoRestService(getPachServico = "/_matrix/client/v3/rooms/{0}/messages?dir=b&limit=1",
             tipoConexao = FabTipoConexaoRest.GET,
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,

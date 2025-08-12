@@ -8,6 +8,7 @@ import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatSalas;
 import br.org.coletivoJava.integracoes.matrixChat.config.FabConfigApiMatrixChat;
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoreMatrixChatIntegracao;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.ItfTokenGestao;
 import org.junit.After;
@@ -21,29 +22,43 @@ import static org.junit.Assert.*;
  *
  * @author salvio
  */
-public class IntegracaoRestIntmatrixchatSalaMarcarComoLidoTest {
+public class IntegracaoRestIntmatrixchatSalaObterUltimas10MensagensTest {
 
-    public IntegracaoRestIntmatrixchatSalaMarcarComoLidoTest() {
+    public IntegracaoRestIntmatrixchatSalaObterUltimas10MensagensTest() {
     }
 
-    /**
-     * Test of gerarCorpoRequisicao method, of class
-     * IntegracaoRestIntmatrixchatSalaMarcarComoLido.
-     */
+    @BeforeClass
+    public static void setUpClass() {
+    }
+
+    @AfterClass
+    public static void tearDownClass() {
+    }
+
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+    }
+
     @Test
-    public void testGerarCorpoRequisicao() {
+    public void testSomeMethod() {
         SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
         String valor = SBCore.getConfigModulo(FabConfigApiMatrixChat.class).getPropriedade(FabConfigApiMatrixChat.DOMINIO_FEDERADO);
         ItfTokenGestao tokenEcontrarById = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_ID.getGestaoToken();
-        if (!tokenEcontrarById.validarToken()) {
-            tokenEcontrarById.excluirToken();
-            tokenEcontrarById.gerarNovoToken();
-        }
-        String usuario = FabConfigApiMatrixChat.USUARIO_ADMIN.getValorParametroSistema();
-        ItfRespostaWebServiceSimples respostaDeclarandoLido = FabApiRestIntMatrixChatSalas.SALA_MARCAR_COMO_LIDO
-                .getAcao("!!JSNztSVxzewKmNBcHZ:casanovadigital.com.br", "$OntOB66N6TavbO-hnUTkJx3srWeRZGnq8NkUdnVaNak").getResposta();
-        System.out.println(respostaDeclarandoLido.getRespostaTexto());
-        assertTrue("Falha notficando", respostaDeclarandoLido.isSucesso());
+        tokenEcontrarById.excluirToken();
+        tokenEcontrarById.gerarNovoToken();
+        assertTrue("Falha obtendo token", tokenEcontrarById.isTemTokemAtivo());
+        ItfRespostaWebServiceSimples ultimasMensagens = FabApiRestIntMatrixChatSalas.SALA_OBTER_ULTIMAS_10_MENSAGENS
+                .getAcao("!QLOZIEkdxvNrMRxpfy:casanovadigital.com.br").getResposta();
+        System.out.println(UtilSBCoreJson.getTextoByJsonObjeect(ultimasMensagens.getRespostaComoObjetoJson()));
+        //   String ultimoEvento
+        //         = UtilSBCoreJson.getValorApartirDoCaminho("chunk[0].event_id", ultimasMensagens.getRespostaComoObjetoJson());
+        //     System.out.println(ultimoEvento);
+        System.out.println(ultimasMensagens.getRespostaTexto());
+        assertTrue("Falha notficando", ultimasMensagens.isSucesso());
     }
 
 }
