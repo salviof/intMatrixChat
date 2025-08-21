@@ -29,7 +29,7 @@ public class IntegracaoRestIntmatrixchatUsuarioCriarTest {
 
         ItfRespostaWebServiceSimples respostaTeste1 = FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR
                 //        .getAcao(codigoUsuario, slugUsuario, "Wagner Mingote", "wagner@casanovadigital.com.br", "553121159755", "Comunic@=PIX").getResposta();
-                .getAcao("@samuel:casanovadigital.com.br", "Samuel Filipe Viana", "samuel@casanovadigital.com.br", "5531986831481", "semSenha@123").getResposta();
+                .getAcao("@eugenia:casanovadigital.com.br", "Eugênia Mendes Bernardes Santos", "eugenia@casanovadigital.com.br", "5531975035242", "semSenha@123").getResposta();
 
         System.out.println(respostaTeste1.getRespostaTexto());
 
