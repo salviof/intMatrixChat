@@ -38,6 +38,6 @@ public enum FabApiRestIntMatrixSpaces implements ItfFabricaIntegracaoRest {
             parametrosPost = {"nome", "apelido"},
             urlDocumentacao = "https://ma1uta.github.io/spec/client_server/unstable.html#post-matrix-client-r0-createroom",
             adicionarAutenticacaoBearer = true)
-    ESPACO_CRIAR,
+    ESPACO_CRIAR;
 
 }

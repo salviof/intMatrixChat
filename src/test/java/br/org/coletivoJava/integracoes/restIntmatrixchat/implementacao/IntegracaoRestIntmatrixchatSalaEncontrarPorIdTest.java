@@ -30,6 +30,7 @@ public class IntegracaoRestIntmatrixchatSalaEncontrarPorIdTest {
         if (!tokenEcontrarById.isTemTokemAtivo()) {
             tokenEcontrarById.gerarNovoToken();
         }
+
         ItfRespostaWebServiceSimples resposta = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_ID.getAcao("!xnlMIZLTTrCHdHUAxI:casanovadigital.com.br").getResposta();
         resposta.dispararMensagens();
         Assert.assertTrue("Falha criando usuário" + resposta.getRespostaTexto(), resposta.isSucesso());

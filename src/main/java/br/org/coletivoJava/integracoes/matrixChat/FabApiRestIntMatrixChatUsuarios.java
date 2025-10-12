@@ -131,6 +131,19 @@ public enum FabApiRestIntMatrixChatUsuarios implements ItfFabricaIntegracaoRest 
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
             urlDocumentacao = "https://www.matrix.org/docs/api/#get-/_matrix/client/v3/presence/-userId-/status",
             adicionarAutenticacaoBearer = true)
-    USUARIO_VALIDACAO_TOKEN
+    USUARIO_VALIDACAO_TOKEN,
+    ///admin/v1/users/@salvio_furbino930:matrix.casanovadigital.com.br/openid/identifiers
+    @InfoConsumoRestService(getPachServico = "/_synapse/admin/v2/users/{0}",
+            tipoConexao = FabTipoConexaoRest.PUT,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            urlDocumentacao = "/_synapse/admin/v1/users/{0}/openid/identifiers",
+            adicionarAutenticacaoBearer = true)
+    USUARIO_DEFINIR_IDENTIFICADOR_CRM,
+    @InfoConsumoRestService(getPachServico = "/_matrix/client/v3/presence/{0}/status",
+            tipoConexao = FabTipoConexaoRest.PUT,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            urlDocumentacao = "https://www.matrix.org/docs/api/#get-/_matrix/client/v3/presence/-userId-/status",
+            adicionarAutenticacaoBearer = true)
+    USUARIO_DEFINIR_STATUS_ONLINE,
 
 }

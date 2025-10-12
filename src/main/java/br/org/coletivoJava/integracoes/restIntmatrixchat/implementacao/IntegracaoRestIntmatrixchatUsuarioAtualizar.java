@@ -4,6 +4,7 @@ import br.org.coletivoJava.integracoes.restIntmatrixchat.api.InfoIntegracaoRestI
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatUsuarios;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreGravatar;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringTelefone;
 import com.super_bits.modulosSB.SBCore.UtilGeral.json.ErroProcessandoJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.RespostaWebServiceSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
@@ -42,7 +43,7 @@ public class IntegracaoRestIntmatrixchatUsuarioAtualizar
             }
             String telefone = null;
             if (getParametros()[3] != null) {
-                telefone = (String) getParametros()[3];
+                telefone = UtilSBCoreStringTelefone.gerarCeluarInternacional((String) getParametros()[3]);
             }
             // String senha = (String) getParametros()[4];
 
@@ -87,7 +88,9 @@ public class IntegracaoRestIntmatrixchatUsuarioAtualizar
         } catch (ErroProcessandoJson ex) {
             throw new UnsupportedOperationException("Parametros Iválidos");
         }
-        return UtilSBCoreJson.getTextoByJsonObjeect(jsonBUilder.build());
+
+        String conteudo = UtilSBCoreJson.getTextoByJsonObjeect(jsonBUilder.build());
+        return conteudo;
     }
 
     @Override

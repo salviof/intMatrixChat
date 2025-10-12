@@ -5,14 +5,19 @@
 package br.org.coletivoJava.integracoes.restIntmatrixchat.implementacao;
 
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatUsuarios;
-import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
+import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixSpaces;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
  * @author salvio
  */
-public class IntegracaoRestIntmatrixchatUsuarioAtualizarTest extends IntegracaoResPadrao {
+public class IntegracaoRestIntmatrixchatLimparBancoTest extends IntegracaoResPadrao {
 
     @Test
     public void testSomeMethod() {
@@ -20,12 +25,6 @@ public class IntegracaoRestIntmatrixchatUsuarioAtualizarTest extends IntegracaoR
         GestaoTokenRestIntmatrixchat tokenGEstao = validarAcessoTokenAdmin();
 
         String usuario = tokenGEstao.getUserID();
-
-        final String codigoUsuario = "@salvio_furbino930:casanovadigital.com.br";
-        final String nome = "Sálvio Furbino";
-        final String email = "salvio@casanovadigital.com.br";
-        final String telefone = "31984178551";
-        getResposta(FabApiRestIntMatrixChatUsuarios.USUARIO_ATUALIZAR, codigoUsuario, nome, email, telefone);
 
     }
 }

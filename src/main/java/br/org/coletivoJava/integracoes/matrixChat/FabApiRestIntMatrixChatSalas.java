@@ -209,9 +209,24 @@ public enum FabApiRestIntMatrixChatSalas implements ItfFabricaIntegracaoRest {
     @InfoConsumoRestService(getPachServico = "/_matrix/client/v3/rooms/{0}/messages?dir=b&limit=1",
             tipoConexao = FabTipoConexaoRest.GET,
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
-            parametrosGet = {"useride"},
+            parametrosGet = {"roomid"},
             urlDocumentacao = "https://matrix-org.github.io/synapse/latest/admin_api/rooms.html#list-room-api",
             adicionarAutenticacaoBearer = true)
-    SALA_OBTER_ULTIMO_EVENTO;
+    SALA_OBTER_ULTIMO_EVENTO,
+    @InfoConsumoRestService(getPachServico = "/_matrix/client/v3/rooms/{0}/state/m.room.power_levels",
+            tipoConexao = FabTipoConexaoRest.GET,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = {"roomid"},
+            urlDocumentacao = "https://matrix-org.github.io/synapse/latest/admin_api/rooms.html#list-room-api",
+            adicionarAutenticacaoBearer = true)
+    SALA_PERMICOES_VISUALIZAR,
+    @InfoConsumoRestService(getPachServico = "/_matrix/client/v3/rooms/{0}/state/m.room.power_levels",
+            tipoConexao = FabTipoConexaoRest.PUT,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = {"useride"},
+            parametrosPost = {"payload"},
+            urlDocumentacao = "https://matrix-org.github.io/synapse/latest/admin_api/rooms.html#list-room-api",
+            adicionarAutenticacaoBearer = true)
+    SALA_PERMICOES_ATUALIZAR;
 
 }
