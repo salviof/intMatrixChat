@@ -7,12 +7,12 @@ package br.org.coletivoJava.integracoes.restIntmatrixchat.implementacao;
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatUsuarios;
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoreMatrixChatIntegracao;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.ItfFabricaIntegracaoRest;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.ComoFabricaIntegracaoRest;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
 import com.super_bits.modulosSB.SBCore.modulos.Controller.Interfaces.ItfResposta;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
 import org.junit.Assert;
 import org.junit.Before;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoUsuario;
 
 /**
  *
@@ -25,13 +25,13 @@ public class IntegracaoResPadrao {
         SBCore.configurar(new ConfiguradorCoreMatrixChatIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
 
     }
-    private ItfUsuario usuario;
+    private ComoUsuario usuario;
 
     public GestaoTokenRestIntmatrixchat validarAcessoTokenAdmin() {
         return validarAcessoToken(null);
     }
 
-    public GestaoTokenRestIntmatrixchat validarAcessoToken(ItfUsuario pUsuario) {
+    public GestaoTokenRestIntmatrixchat validarAcessoToken(ComoUsuario pUsuario) {
         GestaoTokenRestIntmatrixchat gtoke;
         usuario = pUsuario;
         if (pUsuario == null) {
@@ -53,7 +53,7 @@ public class IntegracaoResPadrao {
         return gtoke;
     }
 
-    public ItfResposta getResposta(ItfFabricaIntegracaoRest acao, Object... pParametros) {
+    public ItfResposta getResposta(ComoFabricaIntegracaoRest acao, Object... pParametros) {
         ItfRespostaWebServiceSimples resp = acao.getAcao(pParametros).getResposta();
         System.out.println(resp.getRespostaTexto());
         if (!resp.isSucesso()) {

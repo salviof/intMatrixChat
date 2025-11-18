@@ -4,7 +4,7 @@ import br.org.coletivoJava.integracoes.restIntmatrixchat.api.InfoIntegracaoRestI
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatUsuarios;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoUsuario;
 
 @InfoIntegracaoRestIntmatrixchatUsuarios(tipo = FabApiRestIntMatrixChatUsuarios.USUARIO_DEFINIR_IDENTIFICADOR_CRM)
 public class IntegracaoRestIntmatrixchatUsuarioDefinirIdentificadorCrm
@@ -13,7 +13,7 @@ public class IntegracaoRestIntmatrixchatUsuarioDefinirIdentificadorCrm
 
     public IntegracaoRestIntmatrixchatUsuarioDefinirIdentificadorCrm(
             final FabTipoAgenteClienteApi pTipoAgente,
-            final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
+            final ComoUsuario pUsuario, final java.lang.Object... pParametro) {
         super(
                 FabApiRestIntMatrixChatUsuarios.USUARIO_DEFINIR_IDENTIFICADOR_CRM,
                 pTipoAgente, pUsuario, pParametro);

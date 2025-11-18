@@ -18,13 +18,13 @@ import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.TokenD
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.TokenDeAcessoExternoSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBApiRestClient;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.gestaoToken.GestaoTokenDinamico;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonObjectBuilder;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoUsuario;
 
 @InfoIntegracaoRestIntmatrixchatUsuarios(tipo = FabApiRestIntMatrixChatUsuarios.USUARIO_CRIAR)
 public class GestaoTokenRestIntmatrixchat extends GestaoTokenDinamico {
@@ -45,7 +45,7 @@ public class GestaoTokenRestIntmatrixchat extends GestaoTokenDinamico {
             switch (tipoAgente) {
 
                 case USUARIO:
-                    ItfUsuario usuario = getUsuario();
+                    ComoUsuario usuario = getUsuario();
                     statusUsuario = FabApiRestIntMatrixChatUsuarios.USUARIOS_STATUS.getAcao(usuario, userID).getResposta();
                     break;
                 case SISTEMA:
@@ -66,7 +66,7 @@ public class GestaoTokenRestIntmatrixchat extends GestaoTokenDinamico {
     }
 
     public GestaoTokenRestIntmatrixchat(
-            final FabTipoAgenteClienteApi pTipoAgente, final ItfUsuario pUsuario) {
+            final FabTipoAgenteClienteApi pTipoAgente, final ComoUsuario pUsuario) {
         super(FabApiRestIntMatrixChatUsuarios.class, pTipoAgente, pUsuario);
         configuracao = getConfig();
 

@@ -5,8 +5,8 @@ import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatSalas;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
 import jakarta.json.JsonObject;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoUsuario;
 
 @InfoIntegracaoRestIntmatrixchatSalas(tipo = FabApiRestIntMatrixChatSalas.SALA_PERMICOES_ATUALIZAR)
 public class IntegracaoRestIntmatrixchatSalaPermicoesAtualizar
@@ -15,7 +15,7 @@ public class IntegracaoRestIntmatrixchatSalaPermicoesAtualizar
 
     public IntegracaoRestIntmatrixchatSalaPermicoesAtualizar(
             final FabTipoAgenteClienteApi pTipoAgente,
-            final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
+            final ComoUsuario pUsuario, final java.lang.Object... pParametro) {
         super(FabApiRestIntMatrixChatSalas.SALA_PERMICOES_ATUALIZAR,
                 pTipoAgente, pUsuario, pParametro);
     }

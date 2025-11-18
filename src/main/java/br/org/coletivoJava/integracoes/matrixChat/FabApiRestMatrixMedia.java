@@ -5,7 +5,7 @@
 package br.org.coletivoJava.integracoes.matrixChat;
 
 import br.org.coletivoJava.integracoes.matrixChat.config.FabConfigApiMatrixChat;
-import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.ItfFabricaIntegracaoRest;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.ComoFabricaIntegracaoRest;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.FabTipoConexaoRest;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.InfoConsumoRestService;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.servicoRegistrado.FabTipoAutenticacaoRest;
@@ -21,7 +21,7 @@ import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.importacao.FabTip
         nomeIntegracao = FabConfigApiMatrixChat.NOME_INTEGRACAO,
         configuracao = FabConfigApiMatrixChat.class
 )
-public enum FabApiRestMatrixMedia implements ItfFabricaIntegracaoRest {
+public enum FabApiRestMatrixMedia implements ComoFabricaIntegracaoRest {
 //
     @InfoConsumoRestService(getPachServico = "/_matrix/media/r0/upload?filename={0}",
             tipoConexao = FabTipoConexaoRest.POST,

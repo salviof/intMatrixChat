@@ -6,11 +6,11 @@ import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
 import com.super_bits.modulosSB.SBCore.UtilGeral.json.ErroProcessandoJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
 import jakarta.json.Json;
 import jakarta.json.JsonArrayBuilder;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonObjectBuilder;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoUsuario;
 
 @InfoIntegracaoRestIntmatrixchatUsuarios(tipo = FabApiRestIntMatrixChatUsuarios.USUARIO_ATUALIZAR_ID)
 public class IntegracaoRestIntmatrixchatUsuarioAtualizarId
@@ -19,7 +19,7 @@ public class IntegracaoRestIntmatrixchatUsuarioAtualizarId
 
     public IntegracaoRestIntmatrixchatUsuarioAtualizarId(
             final FabTipoAgenteClienteApi pTipoAgente,
-            final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
+            final ComoUsuario pUsuario, final java.lang.Object... pParametro) {
         super(FabApiRestIntMatrixChatUsuarios.USUARIO_ATUALIZAR_ID,
                 pTipoAgente, pUsuario, pParametro);
     }

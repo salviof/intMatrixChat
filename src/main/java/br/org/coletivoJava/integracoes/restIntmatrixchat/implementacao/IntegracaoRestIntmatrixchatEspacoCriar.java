@@ -4,7 +4,7 @@ import br.org.coletivoJava.integracoes.restIntmatrixchat.api.InfoIntegracaoRestI
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixSpaces;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoUsuario;
 
 @InfoIntegracaoRestIntmatrixchatSpaces(tipo = FabApiRestIntMatrixSpaces.ESPACO_CRIAR)
 public class IntegracaoRestIntmatrixchatEspacoCriar
@@ -13,7 +13,7 @@ public class IntegracaoRestIntmatrixchatEspacoCriar
 
     public IntegracaoRestIntmatrixchatEspacoCriar(
             final FabTipoAgenteClienteApi pTipoAgente,
-            final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
+            final ComoUsuario pUsuario, final java.lang.Object... pParametro) {
         super(FabApiRestIntMatrixSpaces.ESPACO_CRIAR, pTipoAgente, pUsuario,
                 pParametro);
     }

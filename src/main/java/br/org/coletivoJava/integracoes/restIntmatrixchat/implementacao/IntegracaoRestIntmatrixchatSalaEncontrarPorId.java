@@ -5,7 +5,7 @@ import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatSalas;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.RespostaWebServiceSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoUsuario;
 
 @InfoIntegracaoRestIntmatrixchatSalas(tipo = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_ID)
 public class IntegracaoRestIntmatrixchatSalaEncontrarPorId
@@ -14,7 +14,7 @@ public class IntegracaoRestIntmatrixchatSalaEncontrarPorId
 
     public IntegracaoRestIntmatrixchatSalaEncontrarPorId(
             final FabTipoAgenteClienteApi pTipoAgente,
-            final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
+            final ComoUsuario pUsuario, final java.lang.Object... pParametro) {
         super(FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_ID, pTipoAgente,
                 pUsuario, pParametro);
     }

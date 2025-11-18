@@ -4,8 +4,8 @@ import br.org.coletivoJava.integracoes.restIntmatrixchat.api.InfoIntegracaoRestI
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatSalas;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
 import java.util.Date;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoUsuario;
 
 @InfoIntegracaoRestIntmatrixchatSalas(tipo = FabApiRestIntMatrixChatSalas.SALA_ENVIAR_MENSAGEM_DOCUMENTO)
 public class IntegracaoRestIntmatrixchatSalaEnviarMensagemDocumento
@@ -14,7 +14,7 @@ public class IntegracaoRestIntmatrixchatSalaEnviarMensagemDocumento
 
     public IntegracaoRestIntmatrixchatSalaEnviarMensagemDocumento(
             final FabTipoAgenteClienteApi pTipoAgente,
-            final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
+            final ComoUsuario pUsuario, final java.lang.Object... pParametro) {
         super(FabApiRestIntMatrixChatSalas.SALA_ENVIAR_MENSAGEM_DOCUMENTO,
                 pTipoAgente, pUsuario, pParametro);
     }

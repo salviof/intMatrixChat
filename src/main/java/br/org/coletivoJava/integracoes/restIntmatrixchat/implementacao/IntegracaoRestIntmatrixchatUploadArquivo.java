@@ -6,9 +6,9 @@ import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreBytes;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
 import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.FabTipoArquivoConhecido;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
 import java.io.InputStream;
 import java.util.Map;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoUsuario;
 
 @InfoIntegracaoRestIntmatrixchatMedia(tipo = FabApiRestMatrixMedia.UPLOAD_ARQUIVO)
 public class IntegracaoRestIntmatrixchatUploadArquivo
@@ -17,7 +17,7 @@ public class IntegracaoRestIntmatrixchatUploadArquivo
 
     public IntegracaoRestIntmatrixchatUploadArquivo(
             final FabTipoAgenteClienteApi pTipoAgente,
-            final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
+            final ComoUsuario pUsuario, final java.lang.Object... pParametro) {
         super(FabApiRestMatrixMedia.UPLOAD_ARQUIVO, pTipoAgente, pUsuario,
                 pParametro);
     }

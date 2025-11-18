@@ -1,7 +1,7 @@
 package br.org.coletivoJava.integracoes.matrixChat;
 
 import br.org.coletivoJava.integracoes.matrixChat.config.FabConfigApiMatrixChat;
-import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.ItfFabricaIntegracaoRest;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.ComoFabricaIntegracaoRest;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.FabTipoConexaoRest;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.InfoConsumoRestService;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.servicoRegistrado.FabTipoAutenticacaoRest;
@@ -17,7 +17,7 @@ import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.importacao.FabTip
         nomeIntegracao = FabConfigApiMatrixChat.NOME_INTEGRACAO,
         configuracao = FabConfigApiMatrixChat.class
 )
-public enum FabApiRestIntMatrixChatUsuarios implements ItfFabricaIntegracaoRest {
+public enum FabApiRestIntMatrixChatUsuarios implements ComoFabricaIntegracaoRest {
 
     @InfoConsumoRestService(getPachServico = "/_synapse/admin/v2/users/{0}",
             tipoConexao = FabTipoConexaoRest.PUT,

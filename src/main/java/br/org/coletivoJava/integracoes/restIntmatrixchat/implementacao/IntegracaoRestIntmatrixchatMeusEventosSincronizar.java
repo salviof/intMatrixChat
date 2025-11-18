@@ -4,7 +4,7 @@ import br.org.coletivoJava.integracoes.restIntmatrixchat.api.InfoIntegracaoRestI
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestMatrixNotificacoes;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoUsuario;
 
 @InfoIntegracaoRestIntmatrixchatNotificacoes(tipo = FabApiRestMatrixNotificacoes.MEUS_EVENTOS_SINCRONIZAR)
 public class IntegracaoRestIntmatrixchatMeusEventosSincronizar
@@ -13,7 +13,7 @@ public class IntegracaoRestIntmatrixchatMeusEventosSincronizar
 
     public IntegracaoRestIntmatrixchatMeusEventosSincronizar(
             final FabTipoAgenteClienteApi pTipoAgente,
-            final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
+            final ComoUsuario pUsuario, final java.lang.Object... pParametro) {
         super(FabApiRestMatrixNotificacoes.MEUS_EVENTOS_SINCRONIZAR,
                 pTipoAgente, pUsuario, pParametro);
     }

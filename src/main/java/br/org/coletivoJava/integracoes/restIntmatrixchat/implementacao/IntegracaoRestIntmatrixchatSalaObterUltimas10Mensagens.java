@@ -4,7 +4,7 @@ import br.org.coletivoJava.integracoes.restIntmatrixchat.api.InfoIntegracaoRestI
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatSalas;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoUsuario;
 
 @InfoIntegracaoRestIntmatrixchatSalas(tipo = FabApiRestIntMatrixChatSalas.SALA_OBTER_ULTIMAS_10_MENSAGENS)
 public class IntegracaoRestIntmatrixchatSalaObterUltimas10Mensagens
@@ -13,7 +13,7 @@ public class IntegracaoRestIntmatrixchatSalaObterUltimas10Mensagens
 
 	public IntegracaoRestIntmatrixchatSalaObterUltimas10Mensagens(
 			final FabTipoAgenteClienteApi pTipoAgente,
-			final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
+			final ComoUsuario pUsuario, final java.lang.Object... pParametro) {
 		super(FabApiRestIntMatrixChatSalas.SALA_OBTER_ULTIMAS_10_MENSAGENS,
 				pTipoAgente, pUsuario, pParametro);
 	}

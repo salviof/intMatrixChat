@@ -7,8 +7,8 @@ import com.super_bits.modulosSB.SBCore.UtilGeral.json.ErroProcessandoJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
 import java.util.Date;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoUsuario;
 
 @InfoIntegracaoRestIntmatrixchatSalas(tipo = FabApiRestIntMatrixChatSalas.SALA_ENVIAR_MENSAGEM_IMAGEM)
 public class IntegracaoRestIntmatrixchatSalaEnviarMensagemImagem
@@ -17,7 +17,7 @@ public class IntegracaoRestIntmatrixchatSalaEnviarMensagemImagem
 
     public IntegracaoRestIntmatrixchatSalaEnviarMensagemImagem(
             final FabTipoAgenteClienteApi pTipoAgente,
-            final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
+            final ComoUsuario pUsuario, final java.lang.Object... pParametro) {
         super(FabApiRestIntMatrixChatSalas.SALA_ENVIAR_MENSAGEM_IMAGEM,
                 pTipoAgente, pUsuario, pParametro);
     }
