@@ -43,7 +43,7 @@ public class IntegracaoRestIntmatrixchatUsuarioAtualizar
             }
             String telefone = null;
             if (getParametros()[3] != null) {
-                telefone = UtilSBCoreStringTelefone.gerarCeluarInternacional((String) getParametros()[3]);
+                telefone = UtilSBCoreStringTelefone.gerarNumeroTelefoneInternacional((String) getParametros()[3]);
             }
             // String senha = (String) getParametros()[4];
 
