@@ -7,8 +7,8 @@ package br.org.coletivoJava.integracoes.restIntmatrixchat;
 import br.org.coletivoJava.integracoes.matrixChat.config.FabConfigApiMatrixChat;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.arquivosConfiguracao.ConfigModulo;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringSlugs;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringValidador;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCStringSlugs;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCStringValidador;
 
 import com.super_bits.modulosSB.SBCore.modulos.objetos.validador.ErroValidacao;
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class UtilsbApiMatrixChat {
     }
 
     public static String gerarSlugUserCompativel(String pTexto) {
-        String slugnome = UtilSBCoreStringSlugs.gerarSlugCaixaAlta(pTexto).toLowerCase();
+        String slugnome = UtilCRCStringSlugs.gerarSlugCaixaAlta(pTexto).toLowerCase();
         return slugnome;
     }
 
@@ -51,7 +51,7 @@ public class UtilsbApiMatrixChat {
     }
 
     public static void validarAlias(String pCodigoValidacao) throws ErroValidacao {
-        if (UtilSBCoreStringValidador.isNuloOuEmbranco(pCodigoValidacao)) {
+        if (UtilCRCStringValidador.isNuloOuEmbranco(pCodigoValidacao)) {
             throw new ErroValidacao("não pode ser nulo");
         }
         if (!pCodigoValidacao.contains(":")) {

@@ -2,7 +2,7 @@ package br.org.coletivoJava.integracoes.restIntmatrixchat.implementacao;
 
 import br.org.coletivoJava.integracoes.restIntmatrixchat.api.InfoIntegracaoRestIntmatrixchatMedia;
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestMatrixMedia;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreBytes;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCBytes;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
 import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.FabTipoArquivoConhecido;
@@ -45,7 +45,7 @@ public class IntegracaoRestIntmatrixchatUploadArquivo
     @Override
     public byte[] gerarBytesCorpoRequisicao() {
         InputStream istream = (InputStream) getParametros()[1];
-        byte[] bytes = UtilSBCoreBytes.gerarBytePorInputstream(istream);
+        byte[] bytes = UtilCRCBytes.gerarBytePorInputstream(istream);
         return bytes;
     }
 

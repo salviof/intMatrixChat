@@ -2,7 +2,7 @@ package br.org.coletivoJava.integracoes.restIntmatrixchat.implementacao;
 
 import br.org.coletivoJava.integracoes.restIntmatrixchat.api.InfoIntegracaoRestIntmatrixchatSalas;
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatSalas;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
 import com.super_bits.modulosSB.SBCore.UtilGeral.json.ErroProcessandoJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;

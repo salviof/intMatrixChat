@@ -6,8 +6,8 @@
 package br.org.coletivoJava.integracoes.matrixChat.config;
 
 import com.super_bits.modulosSB.SBCore.ConfigGeral.arquivosConfiguracao.ItfFabConfigModulo;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreNumeros;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringGerador;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCNumeros;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCStringGerador;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.tipoModulos.integracaoOauth.FabPropriedadeModuloIntegracaoOauth;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.tipoModulos.integracaoOauth.InfoPropriedadeConfigRestIntegracao;
 
@@ -38,7 +38,7 @@ public enum FabConfigApiMatrixChat implements ItfFabConfigModulo {
         switch (this) {
 
             case SEGREDO:
-                return UtilSBCoreStringGerador.getStringRandomicaTokenAleatorio(120);
+                return UtilCRCStringGerador.getStringRandomicaTokenAleatorio(120);
 
             case URL_MATRIX_SERVER:
                 return "https://matrix.meudominio.com.br";
@@ -47,7 +47,7 @@ public enum FabConfigApiMatrixChat implements ItfFabConfigModulo {
                 return "admin@meudominio.com.br";
 
             case SENHA_USUARIO_ADMIN:
-                return UtilSBCoreStringGerador.getStringRandomicaTokenAleatorio(120);
+                return UtilCRCStringGerador.getStringRandomicaTokenAleatorio(120);
 
             case DOMINIO_FEDERADO:
                 return "meudominio.com.br";

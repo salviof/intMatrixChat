@@ -6,8 +6,8 @@ package br.org.coletivoJava.integracoes.restIntmatrixchat.implementacao;
 
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatUsuarios;
 import br.org.coletivoJava.integracoes.restIntmatrixchat.UtilsbApiMatrixChat;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringFiltros;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringsCammelCase;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCStringFiltros;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCStringsCammelCase;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -23,9 +23,9 @@ public class IntegracaoRestIntmatrixchatUsuarioDefinirIdentificadorCrmTest exten
 
     private String gerarCodigoUsuario(String pIdentificadoHumano, String pIdentificadorSistema) {
         String pTipo = "at";
-        String identificadorHumano = UtilSBCoreStringsCammelCase.getCamelCaseTextoSemAcentuacaoECaracterEspecial(pIdentificadoHumano);
-        identificadorHumano = UtilSBCoreStringFiltros.getPrimeirasXLetrasDaString(identificadorHumano, 50);
-        String identificadorSistema = UtilSBCoreStringFiltros.removeCaracteresEspeciaisAcentoMantendoApenasLetrasNumerosEspaco(pIdentificadorSistema);
+        String identificadorHumano = UtilCRCStringsCammelCase.getCamelCaseTextoSemAcentuacaoECaracterEspecial(pIdentificadoHumano);
+        identificadorHumano = UtilCRCStringFiltros.getPrimeirasXLetrasDaString(identificadorHumano, 50);
+        String identificadorSistema = UtilCRCStringFiltros.removeCaracteresEspeciaisAcentoMantendoApenasLetrasNumerosEspaco(pIdentificadorSistema);
         String codigoUsuario = UtilsbApiMatrixChat.gerarCodigoBySlugUser(identificadorHumano + "." + identificadorSistema + "." + pTipo);
         return codigoUsuario;
     }

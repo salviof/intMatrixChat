@@ -2,7 +2,7 @@ package br.org.coletivoJava.integracoes.restIntmatrixchat.implementacao;
 
 import br.org.coletivoJava.integracoes.restIntmatrixchat.api.InfoIntegracaoRestIntmatrixchatSalas;
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatSalas;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
 import jakarta.json.JsonObject;
@@ -38,9 +38,9 @@ public class IntegracaoRestIntmatrixchatSalaPermicoesAtualizar
             }
          */
         String prarmetroJson = (String) parametros.get(1);
-        JsonObject jsonValidacao = UtilSBCoreJson.getJsonObjectByTexto(prarmetroJson);
+        JsonObject jsonValidacao = UtilCRCJson.getJsonObjectByTexto(prarmetroJson);
 
-        return UtilSBCoreJson.getTextoByJsonObjeect(jsonValidacao);
+        return UtilCRCJson.getTextoByJsonObjeect(jsonValidacao);
     }
 
 }

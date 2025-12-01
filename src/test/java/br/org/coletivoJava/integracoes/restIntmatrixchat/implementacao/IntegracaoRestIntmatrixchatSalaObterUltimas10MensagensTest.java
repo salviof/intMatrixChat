@@ -8,7 +8,7 @@ import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatSalas;
 import br.org.coletivoJava.integracoes.matrixChat.config.FabConfigApiMatrixChat;
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoreMatrixChatIntegracao;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.ItfTokenGestao;
 import org.junit.After;
@@ -53,9 +53,9 @@ public class IntegracaoRestIntmatrixchatSalaObterUltimas10MensagensTest {
         assertTrue("Falha obtendo token", tokenEcontrarById.isTemTokemAtivo());
         ItfRespostaWebServiceSimples ultimasMensagens = FabApiRestIntMatrixChatSalas.SALA_OBTER_ULTIMAS_10_MENSAGENS
                 .getAcao("!QLOZIEkdxvNrMRxpfy:casanovadigital.com.br").getResposta();
-        System.out.println(UtilSBCoreJson.getTextoByJsonObjeect(ultimasMensagens.getRespostaComoObjetoJson()));
+        System.out.println(UtilCRCJson.getTextoByJsonObjeect(ultimasMensagens.getRespostaComoObjetoJson()));
         //   String ultimoEvento
-        //         = UtilSBCoreJson.getValorApartirDoCaminho("chunk[0].event_id", ultimasMensagens.getRespostaComoObjetoJson());
+        //         = UtilCRCJson.getValorApartirDoCaminho("chunk[0].event_id", ultimasMensagens.getRespostaComoObjetoJson());
         //     System.out.println(ultimoEvento);
         System.out.println(ultimasMensagens.getRespostaTexto());
         assertTrue("Falha notficando", ultimasMensagens.isSucesso());

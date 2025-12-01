@@ -8,9 +8,9 @@ import br.org.coletivoJava.integracoes.matrixChat.FabApiRestMatrixMedia;
 import br.org.coletivoJava.integracoes.matrixChat.config.FabConfigApiMatrixChat;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UTilSBCoreInputs;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreBytes;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringValidador;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCBytes;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCStringValidador;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.RespostaWebServiceSimples;
 import jakarta.json.JsonObject;
 import java.io.InputStream;
@@ -27,10 +27,10 @@ public class UtilMatrixApiServer {
         if (pRespostaWSSemTratamento == null) {
             return pRespostaWSSemTratamento;
         }
-        if (UtilSBCoreStringValidador.isNuloOuEmbranco(pRespostaWSSemTratamento.getResposta())) {
+        if (UtilCRCStringValidador.isNuloOuEmbranco(pRespostaWSSemTratamento.getResposta())) {
             return pRespostaWSSemTratamento;
         }
-        JsonObject json = UtilSBCoreJson.getJsonObjectByTexto(pRespostaWSSemTratamento.getResposta());
+        JsonObject json = UtilCRCJson.getJsonObjectByTexto(pRespostaWSSemTratamento.getResposta());
         if (json.containsKey("error")) {
             //M_FORBIDDEN
             String cofigoErro = json.getString("errcode");
@@ -66,7 +66,7 @@ public class UtilMatrixApiServer {
         cabecalho.put("Content-Type", "application/json");
 
         InputStream input = UTilSBCoreInputs.getStreamByURL(urlRequisicao, 5000, 15000, cabecalho);
-        return UtilSBCoreBytes.gerarBytePorInputstream(input);
+        return UtilCRCBytes.gerarBytePorInputstream(input);
         //https://matrix.casanovadigital.com.br/_matrix/media/r0/download/casanovadigital.com.br/JlefQcrTuHwElyjmqZnZLgsP
 
     }

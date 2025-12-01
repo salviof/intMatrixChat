@@ -2,7 +2,7 @@ package br.org.coletivoJava.integracoes.restIntmatrixchat.implementacao;
 
 import br.org.coletivoJava.integracoes.restIntmatrixchat.api.InfoIntegracaoRestIntmatrixchatSalas;
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatSalas;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
 import com.super_bits.modulosSB.SBCore.UtilGeral.json.ErroProcessandoJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.RespostaWebServiceSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
@@ -37,7 +37,7 @@ public class IntegracaoRestIntmatrixchatSalaEnviarMensagemTextoSimples
     public String gerarCorpoRequisicao() {
         String pMensagem = (String) parametros.get(2);
         try {
-            String jsonTexto = UtilSBCoreJson.getJsonStringBySequenciaChaveValor("body", pMensagem, "msgtype", "m.text");
+            String jsonTexto = UtilCRCJson.getJsonStringBySequenciaChaveValor("body", pMensagem, "msgtype", "m.text");
 
             return jsonTexto;
         } catch (ErroProcessandoJson ex) {

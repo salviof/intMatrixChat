@@ -9,7 +9,7 @@ import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatUsuario
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixSpaces;
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoreMatrixChatIntegracao;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.ItfTokenGestao;
 import jakarta.json.JsonObject;
@@ -46,7 +46,7 @@ public class IntegracaoRestIntmatrixchatSalaDefinirEspacoTest {
     public void testGerarCorpoRequisicao() {
         ItfRespostaWebServiceSimples resp_criar_sala = FabApiRestIntMatrixSpaces.ESPACO_CRIAR.getAcao("Meu espaço testes", "meu_espaco_teste_api").getResposta();
         JsonObject usuarioSalvioJson = FabApiRestIntMatrixChatUsuarios.USUARIO_OBTER_DADOS_BY_EMAIL.getAcao("salvio@casanovadigital.com.br").getResposta().getRespostaComoObjetoJson();
-        System.out.println(UtilSBCoreJson.getTextoByJsonObjeect(usuarioSalvioJson));
+        System.out.println(UtilCRCJson.getTextoByJsonObjeect(usuarioSalvioJson));
         String usuarioID = usuarioSalvioJson.getString("user_id");
         if (!resp_criar_sala.isSucesso()) {
             System.out.println(resp_criar_sala.getRespostaTexto());

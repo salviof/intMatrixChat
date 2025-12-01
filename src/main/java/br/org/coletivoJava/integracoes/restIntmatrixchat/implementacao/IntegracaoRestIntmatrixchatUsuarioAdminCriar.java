@@ -2,8 +2,8 @@ package br.org.coletivoJava.integracoes.restIntmatrixchat.implementacao;
 
 import br.org.coletivoJava.integracoes.restIntmatrixchat.api.InfoIntegracaoRestIntmatrixchatUsuarios;
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatUsuarios;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreGravatar;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCGravatar;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
 import com.super_bits.modulosSB.SBCore.UtilGeral.json.ErroProcessandoJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.RespostaWebServiceSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
@@ -44,22 +44,22 @@ public class IntegracaoRestIntmatrixchatUsuarioAdminCriar
             System.out.println("telefone" + telefone);
             System.out.println("Senha:" + senha);
 
-            jsonBUilder = UtilSBCoreJson.
+            jsonBUilder = UtilCRCJson.
                     getJsonBuilderBySequenciaChaveValor(
                             "username", usuario,
                             "displayname", nome,
                             "password", senha,
-                            "avatar_url", UtilSBCoreGravatar.getGravatarUrl(email, 80),
+                            "avatar_url", UtilCRCGravatar.getGravatarUrl(email, 80),
                             "admin", true,
                             "deactivated", false
                     //,"access_token", getTokenGestao().getToken()
                     );
 
-            JsonObject threepidEmail = UtilSBCoreJson.getJsonObjectBySequenciaChaveValor("medium", "email", "address", email);
+            JsonObject threepidEmail = UtilCRCJson.getJsonObjectBySequenciaChaveValor("medium", "email", "address", email);
             JsonArrayBuilder threepidsBuilder = Json.createArrayBuilder();
             threepidsBuilder.add(threepidEmail);
             if (telefone != null) {
-                JsonObject threepidPhone = UtilSBCoreJson.getJsonObjectBySequenciaChaveValor("medium", "msisdn", "address", telefone);
+                JsonObject threepidPhone = UtilCRCJson.getJsonObjectBySequenciaChaveValor("medium", "msisdn", "address", telefone);
 
                 threepidsBuilder.add(threepidPhone);
             }
@@ -67,7 +67,7 @@ public class IntegracaoRestIntmatrixchatUsuarioAdminCriar
         } catch (ErroProcessandoJson ex) {
             throw new UnsupportedOperationException("Parametros Iválidos");
         }
-        return UtilSBCoreJson.getTextoByJsonObjeect(jsonBUilder.build());
+        return UtilCRCJson.getTextoByJsonObjeect(jsonBUilder.build());
     }
 
     @Override

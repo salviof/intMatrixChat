@@ -7,7 +7,7 @@ package br.org.coletivoJava.integracoes.restIntmatrixchat.implementacao;
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatSalas;
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoreMatrixChatIntegracao;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.ItfTokenGestao;
 import jakarta.json.JsonObject;
@@ -37,7 +37,7 @@ public class IntegracaoRestIntmatrixchatSalaAliasesTest {
         ItfRespostaWebServiceSimples resposta = FabApiRestIntMatrixChatSalas.SALA_ENCONTRAR_POR_NOME.getAcao("apenasTeste").getResposta();
         String id = resposta.getRespostaComoObjetoJson().getJsonArray("rooms").getJsonObject(0).getString("room_id");
         JsonObject sala = resposta.getRespostaComoObjetoJson().getJsonArray("rooms").getJsonObject(0);
-        System.out.println(UtilSBCoreJson.getTextoByJsonObjeect(sala));
+        System.out.println(UtilCRCJson.getTextoByJsonObjeect(sala));
         System.out.println(resposta.getRespostaTexto());
         ItfRespostaWebServiceSimples resp = FabApiRestIntMatrixChatSalas.SALA_ALIASES.getAcao(id).getResposta();
         System.out.println(resp.getRespostaTexto());

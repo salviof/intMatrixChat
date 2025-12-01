@@ -7,7 +7,7 @@ package br.org.coletivoJava.integracoes.restIntmatrixchat.implementacao;
 import br.org.coletivoJava.integracoes.matrixChat.config.FabConfigApiMatrixChat;
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoreMatrixChatIntegracao;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreOutputs;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCOutputs;
 import org.junit.Test;
 
 /**
@@ -31,7 +31,7 @@ public class IntegracaoRestIntmatrixchatDownloadArquivoTest {
         String idMedia = matrixMediaSemProtocolo.split("/")[1];
         byte[] arquivo = UtilMatrixApiServer.getMediaBytesByID(idMedia);
 
-        UtilSBCoreOutputs.salvarArquivoByte(arquivo, "/home/salvio/Downloads/teste.png");
+        UtilCRCOutputs.salvarArquivoByte(arquivo, "/home/salvio/Downloads/teste.png");
     }
 
 }

@@ -7,7 +7,7 @@ package br.org.coletivoJava.integracoes.restIntmatrixchat.implementacao;
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatUsuarios;
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoreMatrixChatIntegracao;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
 import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
@@ -35,7 +35,7 @@ public class IntegracaoRestIntmatrixchatUsuarioObterDadosTest {
 
         resposta.dispararMensagens();
         Assert.assertTrue("Falha criando usuário" + resposta.getRespostaTexto(), resposta.isSucesso());
-        JsonObject json = UtilSBCoreJson.getJsonObjectByTexto(resposta.getRespostaTexto());
+        JsonObject json = UtilCRCJson.getJsonObjectByTexto(resposta.getRespostaTexto());
         if (json.containsKey("external_ids")) {
             JsonArray idsExtrnod = json.getJsonArray("external_ids");
             Optional<JsonValue> pesquisaIdentificador = idsExtrnod.stream().filter(jo -> jo.asJsonObject().equals("oidc-casanova")).findFirst();

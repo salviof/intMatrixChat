@@ -5,8 +5,8 @@ import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatUsuario
 import br.org.coletivoJava.integracoes.matrixChat.config.FabConfigApiMatrixChat;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.arquivosConfiguracao.ConfigModulo;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreDataHora;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCDataHora;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
 import com.super_bits.modulosSB.SBCore.UtilGeral.json.ErroProcessandoJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.FabTipoConexaoRest;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
@@ -96,19 +96,19 @@ public class GestaoTokenRestIntmatrixchat extends GestaoTokenDinamico {
         JsonObjectBuilder buider;
         String corpo = "";
         try {
-            buider = UtilSBCoreJson.getJsonBuilderBySequenciaChaveValor("type", "m.login.password");
+            buider = UtilCRCJson.getJsonBuilderBySequenciaChaveValor("type", "m.login.password");
             JsonObject tipoIdentificador;
             if (usuarioLogin.substring(1, usuarioLogin.length() - 1).contains("@")) {
-                tipoIdentificador = UtilSBCoreJson.getJsonObjectBySequenciaChaveValor("type", "m.id.thirdparty",
+                tipoIdentificador = UtilCRCJson.getJsonObjectBySequenciaChaveValor("type", "m.id.thirdparty",
                         "medium", "email",
                         "address", usuarioLogin);
             } else {
-                tipoIdentificador = UtilSBCoreJson.getJsonObjectBySequenciaChaveValor("type", "m.id.user", "user", usuarioLogin);
+                tipoIdentificador = UtilCRCJson.getJsonObjectBySequenciaChaveValor("type", "m.id.user", "user", usuarioLogin);
             }
 
             buider.add("identifier", tipoIdentificador);
             buider.add("password", senhaLogin);
-            corpo = UtilSBCoreJson.getTextoByJsonObjeect(buider.build());
+            corpo = UtilCRCJson.getTextoByJsonObjeect(buider.build());
         } catch (ErroProcessandoJson ex) {
             Logger.getLogger(GestaoTokenRestIntmatrixchat.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -123,9 +123,9 @@ public class GestaoTokenRestIntmatrixchat extends GestaoTokenDinamico {
             UtilMatrixApiServer.gerarRespostaWSTratamentoFino(resposta);
             if (resposta.isSucesso()) {
                 JsonObject jsonArquivado = resposta.getRespostaComoObjetoJson();
-                jsonArquivado = UtilSBCoreJson.getJsonObjectIncrementandoCampo(jsonArquivado, "dataHora", new Date().getTime());
+                jsonArquivado = UtilCRCJson.getJsonObjectIncrementandoCampo(jsonArquivado, "dataHora", new Date().getTime());
 
-                armazenarRespostaToken(UtilSBCoreJson.getTextoByJsonObjeect(jsonArquivado));
+                armazenarRespostaToken(UtilCRCJson.getTextoByJsonObjeect(jsonArquivado));
             } else {
                 if (!SBCore.isEmModoProducao()) {
 
@@ -152,11 +152,11 @@ public class GestaoTokenRestIntmatrixchat extends GestaoTokenDinamico {
     @Override
     public ItfTokenDeAcessoExterno extrairToken(JsonObject pJson) {
         userID = pJson.getString("user_id");
-        Date dataHoraExipira = UtilSBCoreDataHora.incrementaMinutos(new Date(), 5);
+        Date dataHoraExipira = UtilCRCDataHora.incrementaMinutos(new Date(), 5);
         if (pJson.containsKey("dataHora")) {
 
             Date dataHoraGeracaoToken = new Date((long) pJson.getJsonNumber("dataHora").longValue());
-            dataHoraExipira = UtilSBCoreDataHora.incrementaHoras(dataHoraGeracaoToken, 756);
+            dataHoraExipira = UtilCRCDataHora.incrementaHoras(dataHoraGeracaoToken, 756);
         }
         deviceId = pJson.getString("device_id");
         homeServer = pJson.getString("home_server");

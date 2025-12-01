@@ -2,7 +2,7 @@ package br.org.coletivoJava.integracoes.restIntmatrixchat.implementacao;
 
 import br.org.coletivoJava.integracoes.restIntmatrixchat.api.InfoIntegracaoRestIntmatrixchatUsuarios;
 import br.org.coletivoJava.integracoes.matrixChat.FabApiRestIntMatrixChatUsuarios;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
 import com.super_bits.modulosSB.SBCore.UtilGeral.json.ErroProcessandoJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
@@ -31,12 +31,12 @@ public class IntegracaoRestIntmatrixchatUsuarioAtualizarId
             String novoCodigo = (String) parametros.get(1);
 
             JsonObjectBuilder jsonBUilder;
-            jsonBUilder = UtilSBCoreJson.
+            jsonBUilder = UtilCRCJson.
                     getJsonBuilderBySequenciaChaveValor(
                             "name", novoCodigo
                     );
 
-            return UtilSBCoreJson.getTextoByJsonObjeect(jsonBUilder.build());
+            return UtilCRCJson.getTextoByJsonObjeect(jsonBUilder.build());
         } catch (ErroProcessandoJson ex) {
             throw new UnsupportedOperationException("Parametros Iválidos");
         }

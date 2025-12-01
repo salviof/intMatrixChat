@@ -9,7 +9,7 @@ import br.org.coletivoJava.integracoes.matrixChat.FabApiRestMatrixMedia;
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoreMatrixChatIntegracao;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UTilSBCoreInputs;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreResources;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCResources;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
 import jakarta.json.JsonObject;
 import java.io.InputStream;
