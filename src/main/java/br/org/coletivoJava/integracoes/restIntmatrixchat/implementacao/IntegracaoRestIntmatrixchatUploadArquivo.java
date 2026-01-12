@@ -8,7 +8,7 @@ import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgent
 import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.FabTipoArquivoConhecido;
 import java.io.InputStream;
 import java.util.Map;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoUsuario;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.entidade.basico.ComoUsuario;
 
 @InfoIntegracaoRestIntmatrixchatMedia(tipo = FabApiRestMatrixMedia.UPLOAD_ARQUIVO)
 public class IntegracaoRestIntmatrixchatUploadArquivo
