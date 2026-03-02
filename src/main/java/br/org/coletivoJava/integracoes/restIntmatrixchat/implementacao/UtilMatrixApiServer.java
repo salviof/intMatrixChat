@@ -9,6 +9,7 @@ import br.org.coletivoJava.integracoes.matrixChat.config.FabConfigApiMatrixChat;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UTilSBCoreInputs;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCBytes;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCHtmlFormat;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCStringValidador;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.RespostaWebServiceSimples;
@@ -31,6 +32,20 @@ public class UtilMatrixApiServer {
             return pRespostaWSSemTratamento;
         }
         JsonObject json = UtilCRCJson.getJsonObjectByTexto(pRespostaWSSemTratamento.getResposta());
+
+        if (!pRespostaWSSemTratamento.isSucesso()) {
+            if (json == null) {
+                int codigo = pRespostaWSSemTratamento.getCodigoResposta();
+                if (codigo >= 400 && codigo <= 500) {
+                    String descricao = UtilCRCHtmlFormat.retirarTagsDeHtml(pRespostaWSSemTratamento.getRespostaTexto());
+                    pRespostaWSSemTratamento.addErro("Acesso negado " + descricao);
+                } else {
+                    String descricao = UtilCRCHtmlFormat.retirarTagsDeHtml(pRespostaWSSemTratamento.getRespostaTexto());
+                    pRespostaWSSemTratamento.addErro("Erro: " + descricao);
+                }
+                return pRespostaWSSemTratamento;
+            }
+        }
         if (json.containsKey("error")) {
             //M_FORBIDDEN
             String cofigoErro = json.getString("errcode");
