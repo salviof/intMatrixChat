@@ -149,11 +149,11 @@ public enum FabApiRestIntMatrixChatSalas implements ComoFabricaIntegracaoRest {
             adicionarAutenticacaoBearer = true
     )
     SALA_ENVIAR_MENSAGEM_AUDIO,
-    @InfoConsumoRestService(getPachServico = "/_matrix/client/r0/rooms/{0}/send/m.room.message/{1}",
-            tipoConexao = FabTipoConexaoRest.PUT,
+    @InfoConsumoRestService(getPachServico = "/_synapse/admin/v1/rooms/{0}/make_room_admin",
+            tipoConexao = FabTipoConexaoRest.POST,
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
-            parametrosGet = {"roomId", "CODIGO_UNICOMENSAGEM"},
-            parametrosPost = {"mensagem"},
+            parametrosGet = {"roomId"},
+            parametrosPost = {"codigoUsuario"},
             urlDocumentacao
             = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
             adicionarAutenticacaoBearer = true)
@@ -161,8 +161,8 @@ public enum FabApiRestIntMatrixChatSalas implements ComoFabricaIntegracaoRest {
     @InfoConsumoRestService(getPachServico = "/_matrix/client/v3/rooms/{0}/state/m.room.name/",
             tipoConexao = FabTipoConexaoRest.PUT,
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
-            parametrosGet = {"roomId", "CODIGO_UNICOMENSAGEM"},
-            parametrosPost = {"roomChild"},
+            parametrosGet = {"roomId"},
+            parametrosPost = {"user_id"},
             urlDocumentacao
             = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
             adicionarAutenticacaoBearer = true
