@@ -75,6 +75,13 @@ public enum FabApiRestIntMatrixChatSalas implements ComoFabricaIntegracaoRest {
             urlDocumentacao = "https://ma1uta.github.io/spec/client_server/unstable.html#post-matrix-client-r0-createroom",
             adicionarAutenticacaoBearer = true)
     SALA_EXLUIR,
+    @InfoConsumoRestService(getPachServico = "/_synapse/admin/v2/rooms/delete_status/{0}",
+            tipoConexao = FabTipoConexaoRest.GET,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = "{codigoExclusao}",
+            urlDocumentacao = "https://ma1uta.github.io/spec/client_server/unstable.html#post-matrix-client-r0-createroom",
+            adicionarAutenticacaoBearer = true)
+    SALA_EXCLUSAO_STATUS,
     @InfoConsumoRestService(getPachServico = "/_synapse/admin/v2/users/{0}",
             tipoConexao = FabTipoConexaoRest.PUT,
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,

@@ -25,7 +25,7 @@ public class IntegracaoRestIntmatrixchatSalaExluir
                 //   + "    \"new_room_user_id\": \"@someuser:example.com\",\n"
                 //   + "    \"room_name\": \"Content Violation Notification\",\n"
                 //       + "    \"message\": \"Bad Room has been shutdown due to content violations on this server. Please review our Terms of Service.\",\n"
-                //        + "    \"block\": true,\n"
+                + "    \"block\": true,\n"
                 + "    \"purge\": true\n"
                 + "}";
         return corpo;
