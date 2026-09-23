@@ -54,6 +54,14 @@ public enum FabApiRestIntMatrixChatUsuarios implements ComoFabricaIntegracaoRest
             tipoConexao = FabTipoConexaoRest.PUT,
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
             parametrosGet = {"useride"},
+            parametrosPost = {"email"},
+            urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
+            adicionarAutenticacaoBearer = true)
+    USUARIO_DESVINCULAR_TELEFONE,
+    @InfoConsumoRestService(getPachServico = "/_synapse/admin/v2/users/{0}",
+            tipoConexao = FabTipoConexaoRest.PUT,
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            parametrosGet = {"useride"},
             parametrosPost = {"novoID"},
             urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
             adicionarAutenticacaoBearer = true)

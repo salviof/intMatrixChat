@@ -77,7 +77,14 @@ public class IntegracaoRestIntmatrixchatUsuarioAtualizar
                 }
 
                 if (telefone != null) {
-                    JsonObject threepidPhone = UtilCRCJson.getJsonObjectBySequenciaChaveValor("medium", "msisdn", "address", telefone);
+                    // O Matrix define o address de um threepid "msisdn" como
+                    // E.164 SEM o "+" (só dígitos). Mandar com "+" faz o
+                    // Synapse recusar a atualização, e ainda deixa o valor
+                    // enviado diferente do que ele devolve na leitura - o que
+                    // fazia o chamador achar que o telefone mudou em toda
+                    // mensagem e repetir o PUT.
+                    JsonObject threepidPhone = UtilCRCJson.getJsonObjectBySequenciaChaveValor(
+                            "medium", "msisdn", "address", telefone.replaceAll("[^0-9]", ""));
                     threepidsBuilder.add(threepidPhone);
                 }
                 JsonArray idExternos = threepidsBuilder.build();
