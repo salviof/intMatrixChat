@@ -32,7 +32,7 @@ public enum FabApiRestMatrixMedia implements ComoFabricaIntegracaoRest {
             urlDocumentacao = "https://matrix-org.github.io/synapse/v1.59/admin_api/user_admin_api.html",
             adicionarAutenticacaoBearer = true)
     UPLOAD_ARQUIVO,
-    @InfoConsumoRestService(getPachServico = "/_matrix/media/r0/download/{0}/{1}",
+    @InfoConsumoRestService(getPachServico = "/_matrix/client/v1/media/download/{0}/{1}",
             tipoConexao = FabTipoConexaoRest.GET,
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
             parametrosGet = {"serverName", "mediaId"},

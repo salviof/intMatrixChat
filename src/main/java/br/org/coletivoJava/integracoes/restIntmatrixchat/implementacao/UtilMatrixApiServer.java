@@ -65,24 +65,37 @@ public class UtilMatrixApiServer {
         String matrixMediaSemProtocolo = pURL.substring(6, pURL.length());
         String docminio = matrixMediaSemProtocolo.split("/")[0];
         String idMedia = matrixMediaSemProtocolo.split("/")[1];
-        return getMediaBytesByID(idMedia);
+        return getMediaBytesByID(docminio, idMedia);
     }
 
     public static byte[] getMediaBytesByID(String pId) {
         String dominioPR = SBCore.getConfigModulo(FabConfigApiMatrixChat.class).getPropriedade(FabConfigApiMatrixChat.DOMINIO_FEDERADO);
+        return getMediaBytesByID(dominioPR, pId);
+    }
+
+    /**
+     * Desde o Synapse 1.120 (authenticated media, MSC3916) o endpoint legado
+     * /_matrix/media/r0|v3/download não entrega mídia enviada após o
+     * congelamento (responde 404 M_NOT_FOUND). O download precisa ser feito
+     * em /_matrix/client/v1/media/download com token Bearer.
+     *
+     * @param pDominio servidor de origem da mídia (parte do mxc://)
+     * @param pId id da mídia
+     * @return bytes do arquivo
+     */
+    public static byte[] getMediaBytesByID(String pDominio, String pId) {
         String urlServidor = SBCore.getConfigModulo(FabConfigApiMatrixChat.class).getPropriedade(FabConfigApiMatrixChat.URL_MATRIX_SERVER);
         String token = FabApiRestMatrixMedia.DOWNLOAD_ARQUIVO.getGestaoToken().getToken();
         String segredo = SBCore.getConfigModulo(FabConfigApiMatrixChat.class).getPropriedade(FabConfigApiMatrixChat.SEGREDO);
-        String urlRequisicao = urlServidor + "/_matrix/media/r0/download/" + dominioPR + "/" + pId;
+        String urlRequisicao = urlServidor + "/_matrix/client/v1/media/download/" + pDominio + "/" + pId;
 
         Map<String, String> cabecalho = new HashMap<>();
         cabecalho.put("Authorization", "Bearer " + token);
         cabecalho.put("segredo", segredo);
-        cabecalho.put("Content-Type", "application/json");
 
         InputStream input = UTilSBCoreInputs.getStreamByURL(urlRequisicao, 5000, 15000, cabecalho);
         return UtilCRCBytes.gerarBytePorInputstream(input);
-        //https://matrix.casanovadigital.com.br/_matrix/media/r0/download/casanovadigital.com.br/JlefQcrTuHwElyjmqZnZLgsP
+        //https://matrix.casanovadigital.com.br/_matrix/client/v1/media/download/casanovadigital.com.br/JlefQcrTuHwElyjmqZnZLgsP
 
     }
 }
